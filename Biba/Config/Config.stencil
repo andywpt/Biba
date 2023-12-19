@@ -1,6 +1,8 @@
 //swiftlint:disable all
 
 enum Config {
+
+   static let environment = "{{ argument.ENVIRONMENT }}"
    
    enum TapPay{
        static let appId = "{{ argument.TAPPAY_APP_ID }}"

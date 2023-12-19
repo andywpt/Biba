@@ -8,8 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C50C881F83F0D6AB13F39FCC /* Pods_Biba.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7157354F810CA6AF2DD4D79F /* Pods_Biba.framework */; };
-		E82B87B82B30187400078E84 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82B87B72B30187400078E84 /* Secrets.swift */; };
-		E859A8FC2B31694E007E258C /* Config.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = E859A8FB2B31694E007E258C /* Config.generated.swift */; };
+		E859A9092B317A6E007E258C /* Config.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = E859A9082B317A6E007E258C /* Config.generated.swift */; };
 		E8D856BC2B2EFAA9005D2E9F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D856BB2B2EFAA9005D2E9F /* AppDelegate.swift */; };
 		E8D856BE2B2EFAA9005D2E9F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D856BD2B2EFAA9005D2E9F /* SceneDelegate.swift */; };
 		E8D856C52B2EFAAA005D2E9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8D856C42B2EFAAA005D2E9F /* Assets.xcassets */; };
@@ -21,22 +20,21 @@
 		0B32800DCC46F0B719DBAB26 /* Pods-Biba.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Biba.release.xcconfig"; path = "Target Support Files/Pods-Biba/Pods-Biba.release.xcconfig"; sourceTree = "<group>"; };
 		1618B13488A62D9059046DF0 /* Pods-Biba.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Biba.debug.xcconfig"; path = "Target Support Files/Pods-Biba/Pods-Biba.debug.xcconfig"; sourceTree = "<group>"; };
 		7157354F810CA6AF2DD4D79F /* Pods_Biba.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Biba.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E82B87B72B30187400078E84 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		E840D5912B3022EC00AEDFB4 /* Config.stencil */ = {isa = PBXFileReference; lastKnownFileType = text; path = Config.stencil; sourceTree = "<group>"; };
 		E842330A2B30729C0027D863 /* Biba-Stage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Biba-Stage.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E842330E2B3077020027D863 /* GoogleService-Info-Stage.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Stage.plist"; sourceTree = "<group>"; };
-		E842330F2B3077090027D863 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E859A8EC2B3135DC007E258C /* config.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = config.sh; sourceTree = "<group>"; };
 		E859A8F62B316407007E258C /* .env.stage */ = {isa = PBXFileReference; lastKnownFileType = text; path = .env.stage; sourceTree = "<group>"; };
 		E859A8F72B316407007E258C /* .env */ = {isa = PBXFileReference; lastKnownFileType = text; path = .env; sourceTree = "<group>"; };
-		E859A8FB2B31694E007E258C /* Config.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.generated.swift; sourceTree = "<group>"; };
+		E859A9052B3176EF007E258C /* GoogleService-Info-Prod.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Prod.plist"; sourceTree = "<group>"; };
+		E859A9062B317716007E258C /* GoogleService-Info-Stage.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Stage.plist"; sourceTree = "<group>"; };
+		E859A9082B317A6E007E258C /* Config.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.generated.swift; sourceTree = "<group>"; };
 		E8D856BB2B2EFAA9005D2E9F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E8D856BD2B2EFAA9005D2E9F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E8D856C42B2EFAAA005D2E9F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E8D856C72B2EFAAA005D2E9F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E8D856C92B2EFAAA005D2E9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E8D856CF2B2EFB31005D2E9F /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		E8D856E12B2F280E005D2E9F /* Firebase.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = Firebase.sh; sourceTree = "<group>"; };
+		E8D856E12B2F280E005D2E9F /* firebase.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = firebase.sh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,25 +66,25 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		E840D5972B3066FF00AEDFB4 /* App */ = {
-			isa = PBXGroup;
-			children = (
-				E842330F2B3077090027D863 /* GoogleService-Info.plist */,
-				E842330E2B3077020027D863 /* GoogleService-Info-Stage.plist */,
-			);
-			path = App;
-			sourceTree = "<group>";
-		};
 		E859A8F52B316407007E258C /* Config */ = {
 			isa = PBXGroup;
 			children = (
-				E859A8FB2B31694E007E258C /* Config.generated.swift */,
+				E859A9082B317A6E007E258C /* Config.generated.swift */,
 				E859A8F72B316407007E258C /* .env */,
 				E859A8F62B316407007E258C /* .env.stage */,
 				E840D5912B3022EC00AEDFB4 /* Config.stencil */,
 				E859A8EC2B3135DC007E258C /* config.sh */,
 			);
 			path = Config;
+			sourceTree = "<group>";
+		};
+		E859A9072B317722007E258C /* App */ = {
+			isa = PBXGroup;
+			children = (
+				E859A9062B317716007E258C /* GoogleService-Info-Stage.plist */,
+				E859A9052B3176EF007E258C /* GoogleService-Info-Prod.plist */,
+			);
+			path = App;
 			sourceTree = "<group>";
 		};
 		E8D856AF2B2EFAA9005D2E9F = {
@@ -103,15 +101,14 @@
 			isa = PBXGroup;
 			children = (
 				E859A8F52B316407007E258C /* Config */,
-				E840D5972B3066FF00AEDFB4 /* App */,
 				E8D856BB2B2EFAA9005D2E9F /* AppDelegate.swift */,
 				E8D856BD2B2EFAA9005D2E9F /* SceneDelegate.swift */,
+				E859A9072B317722007E258C /* App */,
 				E8D856C42B2EFAAA005D2E9F /* Assets.xcassets */,
 				E8D856C62B2EFAAA005D2E9F /* LaunchScreen.storyboard */,
+				E8D856E22B2F28A5005D2E9F /* Script */,
 				E8D856C92B2EFAAA005D2E9F /* Info.plist */,
 				E8D856CF2B2EFB31005D2E9F /* MainViewController.swift */,
-				E8D856E22B2F28A5005D2E9F /* Script */,
-				E82B87B72B30187400078E84 /* Secrets.swift */,
 			);
 			path = Biba;
 			sourceTree = "<group>";
@@ -119,7 +116,7 @@
 		E8D856E22B2F28A5005D2E9F /* Script */ = {
 			isa = PBXGroup;
 			children = (
-				E8D856E12B2F280E005D2E9F /* Firebase.sh */,
+				E8D856E12B2F280E005D2E9F /* firebase.sh */,
 			);
 			path = Script;
 			sourceTree = "<group>";
@@ -267,7 +264,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n${PROJECT_DIR}/${TARGET_NAME}/Script/Firebase.sh\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n${PROJECT_DIR}/${TARGET_NAME}/Script/firebase.sh\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -276,9 +273,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E859A9092B317A6E007E258C /* Config.generated.swift in Sources */,
 				E8D856BC2B2EFAA9005D2E9F /* AppDelegate.swift in Sources */,
-				E859A8FC2B31694E007E258C /* Config.generated.swift in Sources */,
-				E82B87B82B30187400078E84 /* Secrets.swift in Sources */,
 				E8D856BE2B2EFAA9005D2E9F /* SceneDelegate.swift in Sources */,
 				E8D856D02B2EFB31005D2E9F /* MainViewController.swift in Sources */,
 			);

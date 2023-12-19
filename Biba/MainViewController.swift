@@ -28,11 +28,21 @@ class MainViewController: UIViewController {
         }
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .black
+        label.font = .systemFont(ofSize: 30,weight: .medium)
         view.addSubview(label)
         NSLayoutConstraint.activate([
             label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             label.centerYAnchor.constraint(equalTo: view.centerYAnchor),
         ])
-        label.text = "Value = \(Config.TapPay.appId)"
+        label.text = "\(Config.environment)"
+        if Config.environment == "正式環境"{
+            view.backgroundColor = .white
+            label.textColor = .black
+        }else if Config.environment == "測試環境"{
+            view.backgroundColor = .black
+            label.textColor = .white
+        }else{
+            fatalError("Config.environment missing")
+        }
     }
 }

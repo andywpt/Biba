@@ -736,9 +736,13 @@ PODS:
   - nanopb/decode (2.30909.1)
   - nanopb/encode (2.30909.1)
   - PromisesObjC (2.3.1)
+  - Sourcery (2.1.1):
+    - Sourcery/CLI-Only (= 2.1.1)
+  - Sourcery/CLI-Only (2.1.1)
 
 DEPENDENCIES:
   - FirebaseFirestore
+  - Sourcery
 
 SPEC REPOS:
   trunk:
@@ -757,6 +761,7 @@ SPEC REPOS:
     - leveldb-library
     - nanopb
     - PromisesObjC
+    - Sourcery
 
 SPEC CHECKSUMS:
   abseil: 926fb7a82dc6d2b8e1f2ed7f3a718bce691d1e46
@@ -774,7 +779,8 @@ SPEC CHECKSUMS:
   leveldb-library: f03246171cce0484482ec291f88b6d563699ee06
   nanopb: d4d75c12cd1316f4a64e3c6963f879ecd4b5e0d5
   PromisesObjC: c50d2056b5253dadbd6c2bea79b0674bd5a52fa4
+  Sourcery: 3a6e2e9bd439caeee302e8150dc712d2f8ef45b3
 
-PODFILE CHECKSUM: e283ce9719783f3174f67240e1ee817967a611c5
+PODFILE CHECKSUM: c918807d6d02f412648f7b170264f5653915c3e9
 
 COCOAPODS: 1.12.1

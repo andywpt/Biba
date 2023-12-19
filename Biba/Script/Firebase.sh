@@ -6,10 +6,12 @@
 #  Created by Andy Wu on 2023/12/17.
 #
 
+# Make sure to chmod u+x Build-Phases/my-script.sh
+
 INFO_PLIST=GoogleService-Info.plist
 
-DEBUG_INFO_PLIST=${PROJECT_DIR}/${TARGET_NAME}/Firebase\ Config/Debug/${INFO_PLIST}
-RELEASE_INFO_PLIST=${PROJECT_DIR}/${TARGET_NAME}/Firebase\ Config/Release/${INFO_PLIST}
+RELEASE_INFO_PLIST=${PROJECT_DIR}/${TARGET_NAME}/App/GoogleService-Info.plist
+DEBUG_INFO_PLIST=${PROJECT_DIR}/${TARGET_NAME}/App/GoogleService-Info-Stage.plist
 
 echo "Checking ${INFO_PLIST} in ${DEBUG_INFO_PLIST}"
 if [ ! -f $DEBUG_INFO_PLIST ] ; then
@@ -33,4 +35,5 @@ else
     echo "Copied ${DEBUG_INFO_PLIST}."
     cp "${DEBUG_INFO_PLIST}" "${PLIST_DESTINATION}"
 fi
+
 

@@ -1,0 +1,10 @@
+//swiftlint:disable all
+
+enum Config {
+   
+   enum TapPay{
+       static let appId = "{{ argument.TAPPAY_APP_ID }}"
+       static let appKey = "{{ argument.TAPPAY_APP_KEY }}"
+   }
+   
+}

@@ -78,13 +78,14 @@
 			path = Config;
 			sourceTree = "<group>";
 		};
-		E859A9072B317722007E258C /* App */ = {
+		E859A9072B317722007E258C /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
 				E859A9062B317716007E258C /* GoogleService-Info-Stage.plist */,
 				E859A9052B3176EF007E258C /* GoogleService-Info-Prod.plist */,
+				E8D856E12B2F280E005D2E9F /* firebase.sh */,
 			);
-			path = App;
+			path = Firebase;
 			sourceTree = "<group>";
 		};
 		E8D856AF2B2EFAA9005D2E9F = {
@@ -101,24 +102,15 @@
 			isa = PBXGroup;
 			children = (
 				E859A8F52B316407007E258C /* Config */,
+				E859A9072B317722007E258C /* Firebase */,
 				E8D856BB2B2EFAA9005D2E9F /* AppDelegate.swift */,
 				E8D856BD2B2EFAA9005D2E9F /* SceneDelegate.swift */,
-				E859A9072B317722007E258C /* App */,
 				E8D856C42B2EFAAA005D2E9F /* Assets.xcassets */,
 				E8D856C62B2EFAAA005D2E9F /* LaunchScreen.storyboard */,
-				E8D856E22B2F28A5005D2E9F /* Script */,
 				E8D856C92B2EFAAA005D2E9F /* Info.plist */,
 				E8D856CF2B2EFB31005D2E9F /* MainViewController.swift */,
 			);
 			path = Biba;
-			sourceTree = "<group>";
-		};
-		E8D856E22B2F28A5005D2E9F /* Script */ = {
-			isa = PBXGroup;
-			children = (
-				E8D856E12B2F280E005D2E9F /* firebase.sh */,
-			);
-			path = Script;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,7 +256,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n${PROJECT_DIR}/${TARGET_NAME}/Script/firebase.sh\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n${PROJECT_DIR}/${TARGET_NAME}/Firebase/firebase.sh\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

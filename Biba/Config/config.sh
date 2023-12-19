@@ -24,7 +24,6 @@ fi
 [[ "${CONFIGURATION}" == "Release" ]] && file="$ENV_FILE" || file="$ENV_STAGE_FILE"
 
 arguments=$(sed -n 's/=/ /p' $file | awk '{printf "%s=\"%s\",", $1, $2}' | sed 's/,$//')
-echo "Joined Values $arguments"
 
 # Run Sourcery Codegen
 $PODS_ROOT/Sourcery/bin/sourcery --templates $TEMPLATE_PATH --sources $CONFIG_PATH --output $CONFIG_PATH --args $arguments

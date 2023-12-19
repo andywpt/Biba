@@ -1,3 +1,3 @@
 **/.env
 **/.env.stage
-**/Config.generated.swift
+**/Config.swift

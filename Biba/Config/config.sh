@@ -6,24 +6,26 @@
 #  Created by Andy Wu on 2023/12/19.
 #
 
+# This script should run before the complie step in build phase
+
 CONFIG_PATH=${PROJECT_DIR}/${TARGET_NAME}/Config
-ENV_FILE=${CONFIG_PATH}/.env
-ENV_STAGE_FILE=${CONFIG_PATH}/.env.stage
 TEMPLATE_PATH=${CONFIG_PATH}/Config.stencil
+OUTPUT_PATH=$CONFIG_PATH/Config.swift
 
-if [ ! -f $ENV_FILE ] ; then
-    echo ".env not found at ${ENV_FILE}"
-    exit 1
+file=""
+if [ "${CONFIGURATION}" == "Release" ] ; then
+    file=${CONFIG_PATH}/.env
+else
+    file=${CONFIG_PATH}/.env.stage
 fi
 
-if [ ! -f $ENV_STAGE_FILE ] ; then
-    echo ".env.stage not found at ${ENV_STAGE_FILE}"
+if [ ! -f $file ] ; then
+    echo "Missing file at ${file}"
     exit 1
 fi
-
-[[ "${CONFIGURATION}" == "Release" ]] && file="$ENV_FILE" || file="$ENV_STAGE_FILE"
-
+# Arguments should be separated with , without spaces (i.e. arg1=value,arg2=value)
+# To pass in string you should use escaped quotes (\")
 arguments=$(sed -n 's/=/ /p' $file | awk '{printf "%s=\"%s\",", $1, $2}' | sed 's/,$//')
 
 # Run Sourcery Codegen
-$PODS_ROOT/Sourcery/bin/sourcery --templates $TEMPLATE_PATH --sources $CONFIG_PATH --output $CONFIG_PATH --args $arguments
+$PODS_ROOT/Sourcery/bin/sourcery --templates $TEMPLATE_PATH --sources $CONFIG_PATH --output $OUTPUT_PATH --args $arguments

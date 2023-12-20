@@ -15,17 +15,17 @@
  */
 
 #if SWIFT_PACKAGE
-    @_exported import FirebaseFirestoreInternalWrapper
+  @_exported import FirebaseFirestoreInternalWrapper
 #else
-    @_exported import FirebaseFirestoreInternal
+  @_exported import FirebaseFirestoreInternal
 #endif // SWIFT_PACKAGE
 
 @_implementationOnly import FirebaseCoreExtension
 import FirebaseSharedSwift
 
 extension CodingUserInfoKey {
-    static let documentRefUserInfoKey =
-        CodingUserInfoKey(rawValue: "DocumentRefUserInfoKey")!
+  static let documentRefUserInfoKey =
+    CodingUserInfoKey(rawValue: "DocumentRefUserInfoKey")!
 }
 
 /// A type that can initialize itself from a Firestore `DocumentReference`,
@@ -38,22 +38,22 @@ extension CodingUserInfoKey {
 /// so there is no requirement to convert from the wrapped type back to a
 /// `DocumentReference`.
 public protocol DocumentIDWrappable {
-    /// Creates a new instance by converting from the given `DocumentReference`.
-    static func wrap(_ documentReference: DocumentReference) throws -> Self
+  /// Creates a new instance by converting from the given `DocumentReference`.
+  static func wrap(_ documentReference: DocumentReference) throws -> Self
 }
 
 extension String: DocumentIDWrappable {
-    public static func wrap(_ documentReference: DocumentReference) throws -> Self {
-        return documentReference.documentID
-    }
+  public static func wrap(_ documentReference: DocumentReference) throws -> Self {
+    return documentReference.documentID
+  }
 }
 
 extension DocumentReference: DocumentIDWrappable {
-    public static func wrap(_ documentReference: DocumentReference) throws -> Self {
-        // Swift complains that values of type DocumentReference cannot be returned
-        // as Self which is nonsensical. The cast forces this to work.
-        return documentReference as! Self
-    }
+  public static func wrap(_ documentReference: DocumentReference) throws -> Self {
+    // Swift complains that values of type DocumentReference cannot be returned
+    // as Self which is nonsensical. The cast forces this to work.
+    return documentReference as! Self
+  }
 }
 
 /// An internal protocol that allows Firestore.Decoder to test if a type is a
@@ -67,8 +67,8 @@ extension DocumentReference: DocumentIDWrappable {
 /// conforms) indirectly makes it possible to test for and act on any
 /// `DocumentID<Value>`.
 protocol DocumentIDProtocol {
-    /// Initializes the DocumentID from a DocumentReference.
-    init(from documentReference: DocumentReference?) throws
+  /// Initializes the DocumentID from a DocumentReference.
+  init(from documentReference: DocumentReference?) throws
 }
 
 /// A property wrapper type that marks a `DocumentReference?` or `String?` field to
@@ -109,84 +109,82 @@ protocol DocumentIDProtocol {
 ///   write it into another without adjusting the value here.
 @propertyWrapper
 public struct DocumentID<Value: DocumentIDWrappable & Codable>:
-    StructureCodingUncodedUnkeyed
-{
-    private var value: Value? = nil
+  StructureCodingUncodedUnkeyed {
+  private var value: Value? = nil
 
-    public init(wrappedValue value: Value?) {
-        if let value = value {
-            logIgnoredValueWarning(value: value)
-        }
-        self.value = value
+  public init(wrappedValue value: Value?) {
+    if let value = value {
+      logIgnoredValueWarning(value: value)
     }
+    self.value = value
+  }
 
-    public var wrappedValue: Value? {
-        get { value }
-        set {
-            if let someNewValue = newValue {
-                logIgnoredValueWarning(value: someNewValue)
-            }
-            value = newValue
-        }
+  public var wrappedValue: Value? {
+    get { value }
+    set {
+      if let someNewValue = newValue {
+        logIgnoredValueWarning(value: someNewValue)
+      }
+      value = newValue
     }
+  }
 
-    private func logIgnoredValueWarning(value: Value) {
-        FirebaseLogger.log(
-            level: .warning,
-            service: "[FirebaseFirestoreSwift]",
-            code: "I-FST000002",
-            message: """
-            Attempting to initialize or set a @DocumentID property with a non-nil \
-            value: "\(value)". The document ID is managed by Firestore and any \
-            initialized or set value will be ignored. The ID is automatically set \
-            when reading from Firestore.
-            """
-        )
-    }
+  private func logIgnoredValueWarning(value: Value) {
+    FirebaseLogger.log(
+      level: .warning,
+      service: "[FirebaseFirestoreSwift]",
+      code: "I-FST000002",
+      message: """
+      Attempting to initialize or set a @DocumentID property with a non-nil \
+      value: "\(value)". The document ID is managed by Firestore and any \
+      initialized or set value will be ignored. The ID is automatically set \
+      when reading from Firestore.
+      """
+    )
+  }
 }
 
 extension DocumentID: DocumentIDProtocol {
-    init(from documentReference: DocumentReference?) throws {
-        if let documentReference = documentReference {
-            value = try Value.wrap(documentReference)
-        } else {
-            value = nil
-        }
+  init(from documentReference: DocumentReference?) throws {
+    if let documentReference = documentReference {
+      value = try Value.wrap(documentReference)
+    } else {
+      value = nil
     }
+  }
 }
 
 extension DocumentID: Codable {
-    /// A `Codable` object  containing an `@DocumentID` annotated field should
-    /// only be decoded with `Firestore.Decoder`; this initializer throws if an
-    /// unsupported decoder is used.
-    ///
-    /// - Parameter decoder: A decoder.
-    /// - Throws: ``FirestoreDecodingError``
-    public init(from decoder: Decoder) throws {
-        guard let reference = decoder
-            .userInfo[CodingUserInfoKey.documentRefUserInfoKey] as? DocumentReference
-        else {
-            throw FirestoreDecodingError.decodingIsNotSupported(
-                """
-                Could not find DocumentReference for user info key: \(CodingUserInfoKey
-                    .documentRefUserInfoKey).
-                DocumentID values can only be decoded with Firestore.Decoder
-                """
-            )
-        }
-        try self.init(from: reference)
+  /// A `Codable` object  containing an `@DocumentID` annotated field should
+  /// only be decoded with `Firestore.Decoder`; this initializer throws if an
+  /// unsupported decoder is used.
+  ///
+  /// - Parameter decoder: A decoder.
+  /// - Throws: ``FirestoreDecodingError``
+  public init(from decoder: Decoder) throws {
+    guard let reference = decoder
+      .userInfo[CodingUserInfoKey.documentRefUserInfoKey] as? DocumentReference else {
+      throw FirestoreDecodingError.decodingIsNotSupported(
+        """
+        Could not find DocumentReference for user info key: \(CodingUserInfoKey
+          .documentRefUserInfoKey).
+        DocumentID values can only be decoded with Firestore.Decoder
+        """
+      )
     }
+    try self.init(from: reference)
+  }
 
-    /// A `Codable` object  containing an `@DocumentID` annotated field can only
-    /// be encoded  with `Firestore.Encoder`; this initializer always throws.
-    ///
-    /// - Parameter encoder: An invalid encoder.
-    /// - Throws: ``FirestoreEncodingError``
-    public func encode(to _: Encoder) throws {
-        throw FirestoreEncodingError.encodingIsNotSupported(
-            "DocumentID values can only be encoded with Firestore.Encoder"
-        )
-    }
+  /// A `Codable` object  containing an `@DocumentID` annotated field can only
+  /// be encoded  with `Firestore.Encoder`; this initializer always throws.
+  ///
+  /// - Parameter encoder: An invalid encoder.
+  /// - Throws: ``FirestoreEncodingError``
+  public func encode(to encoder: Encoder) throws {
+    throw FirestoreEncodingError.encodingIsNotSupported(
+      "DocumentID values can only be encoded with Firestore.Encoder"
+    )
+  }
 }
 
 extension DocumentID: Equatable where Value: Equatable {}

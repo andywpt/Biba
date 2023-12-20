@@ -15,9 +15,9 @@
  */
 
 #if SWIFT_PACKAGE
-    @_exported import FirebaseFirestoreInternalWrapper
+  @_exported import FirebaseFirestoreInternalWrapper
 #else
-    @_exported import FirebaseFirestoreInternal
+  @_exported import FirebaseFirestoreInternal
 #endif // SWIFT_PACKAGE
 
 /// A type that can initialize itself from a Firestore Timestamp, which makes
@@ -26,35 +26,35 @@
 /// Firestore includes extensions that make `Timestamp` and `Date` conform to
 /// `ServerTimestampWrappable`.
 public protocol ServerTimestampWrappable {
-    /// Creates a new instance by converting from the given `Timestamp`.
-    ///
-    /// - Parameter timestamp: The timestamp from which to convert.
-    static func wrap(_ timestamp: Timestamp) throws -> Self
+  /// Creates a new instance by converting from the given `Timestamp`.
+  ///
+  /// - Parameter timestamp: The timestamp from which to convert.
+  static func wrap(_ timestamp: Timestamp) throws -> Self
 
-    /// Converts this value into a Firestore `Timestamp`.
-    ///
-    /// - Returns: A `Timestamp` representation of this value.
-    static func unwrap(_ value: Self) throws -> Timestamp
+  /// Converts this value into a Firestore `Timestamp`.
+  ///
+  /// - Returns: A `Timestamp` representation of this value.
+  static func unwrap(_ value: Self) throws -> Timestamp
 }
 
 extension Date: ServerTimestampWrappable {
-    public static func wrap(_ timestamp: Timestamp) throws -> Self {
-        return timestamp.dateValue()
-    }
+  public static func wrap(_ timestamp: Timestamp) throws -> Self {
+    return timestamp.dateValue()
+  }
 
-    public static func unwrap(_ value: Self) throws -> Timestamp {
-        return Timestamp(date: value)
-    }
+  public static func unwrap(_ value: Self) throws -> Timestamp {
+    return Timestamp(date: value)
+  }
 }
 
 extension Timestamp: ServerTimestampWrappable {
-    public static func wrap(_ timestamp: Timestamp) throws -> Self {
-        return timestamp as! Self
-    }
+  public static func wrap(_ timestamp: Timestamp) throws -> Self {
+    return timestamp as! Self
+  }
 
-    public static func unwrap(_ value: Timestamp) throws -> Timestamp {
-        return value
-    }
+  public static func unwrap(_ value: Timestamp) throws -> Timestamp {
+    return value
+  }
 }
 
 /// A property wrapper that marks an `Optional<Timestamp>` field to be
@@ -73,38 +73,37 @@ extension Timestamp: ServerTimestampWrappable {
 /// current timestamp.
 @propertyWrapper
 public struct ServerTimestamp<Value>: Codable
-    where Value: ServerTimestampWrappable & Codable
-{
-    var value: Value?
+  where Value: ServerTimestampWrappable & Codable {
+  var value: Value?
 
-    public init(wrappedValue value: Value?) {
-        self.value = value
+  public init(wrappedValue value: Value?) {
+    self.value = value
+  }
+
+  public var wrappedValue: Value? {
+    get { value }
+    set { value = newValue }
+  }
+
+  // MARK: Codable
+
+  public init(from decoder: Decoder) throws {
+    let container = try decoder.singleValueContainer()
+    if container.decodeNil() {
+      value = nil
+    } else {
+      value = try Value.wrap(container.decode(Timestamp.self))
     }
+  }
 
-    public var wrappedValue: Value? {
-        get { value }
-        set { value = newValue }
+  public func encode(to encoder: Encoder) throws {
+    var container = encoder.singleValueContainer()
+    if let value = value {
+      try container.encode(Value.unwrap(value))
+    } else {
+      try container.encode(FieldValue.serverTimestamp())
     }
-
-    // MARK: Codable
-
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.singleValueContainer()
-        if container.decodeNil() {
-            value = nil
-        } else {
-            value = try Value.wrap(container.decode(Timestamp.self))
-        }
-    }
-
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.singleValueContainer()
-        if let value = value {
-            try container.encode(Value.unwrap(value))
-        } else {
-            try container.encode(FieldValue.serverTimestamp())
-        }
-    }
+  }
 }
 
 extension ServerTimestamp: Equatable where Value: Equatable {}

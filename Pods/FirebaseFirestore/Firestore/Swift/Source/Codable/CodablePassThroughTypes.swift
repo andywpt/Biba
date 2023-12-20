@@ -18,17 +18,17 @@ import FirebaseSharedSwift
 import Foundation
 
 #if SWIFT_PACKAGE
-    @_exported import FirebaseFirestoreInternalWrapper
+  @_exported import FirebaseFirestoreInternalWrapper
 #else
-    @_exported import FirebaseFirestoreInternal
+  @_exported import FirebaseFirestoreInternal
 #endif // SWIFT_PACKAGE
 
 struct FirestorePassthroughTypes: StructureCodingPassthroughTypeResolver {
-    static func isPassthroughType<T>(_ t: T) -> Bool {
-        return
-            t is GeoPoint ||
-            t is Timestamp ||
-            t is FieldValue ||
-            t is DocumentReference
-    }
+  static func isPassthroughType<T>(_ t: T) -> Bool {
+    return
+      t is GeoPoint ||
+      t is Timestamp ||
+      t is FieldValue ||
+      t is DocumentReference
+  }
 }

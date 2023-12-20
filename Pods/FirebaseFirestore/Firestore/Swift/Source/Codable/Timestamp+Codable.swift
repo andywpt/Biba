@@ -15,9 +15,9 @@
  */
 
 #if SWIFT_PACKAGE
-    @_exported import FirebaseFirestoreInternalWrapper
+  @_exported import FirebaseFirestoreInternalWrapper
 #else
-    @_exported import FirebaseFirestoreInternal
+  @_exported import FirebaseFirestoreInternal
 #endif // SWIFT_PACKAGE
 
 /**
@@ -29,16 +29,16 @@
  * protocol sidesteps this issue.
  */
 private protocol CodableTimestamp: Codable {
-    var seconds: Int64 { get }
-    var nanoseconds: Int32 { get }
+  var seconds: Int64 { get }
+  var nanoseconds: Int32 { get }
 
-    init(seconds: Int64, nanoseconds: Int32)
+  init(seconds: Int64, nanoseconds: Int32)
 }
 
 /** The keys in a Timestamp. Must match the properties of CodableTimestamp. */
 private enum TimestampKeys: String, CodingKey {
-    case seconds
-    case nanoseconds
+  case seconds
+  case nanoseconds
 }
 
 /**
@@ -48,18 +48,18 @@ private enum TimestampKeys: String, CodingKey {
  * when declaring an extension to conform to Codable.
  */
 extension CodableTimestamp {
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: TimestampKeys.self)
-        let seconds = try container.decode(Int64.self, forKey: .seconds)
-        let nanoseconds = try container.decode(Int32.self, forKey: .nanoseconds)
-        self.init(seconds: seconds, nanoseconds: nanoseconds)
-    }
+  public init(from decoder: Decoder) throws {
+    let container = try decoder.container(keyedBy: TimestampKeys.self)
+    let seconds = try container.decode(Int64.self, forKey: .seconds)
+    let nanoseconds = try container.decode(Int32.self, forKey: .nanoseconds)
+    self.init(seconds: seconds, nanoseconds: nanoseconds)
+  }
 
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: TimestampKeys.self)
-        try container.encode(seconds, forKey: .seconds)
-        try container.encode(nanoseconds, forKey: .nanoseconds)
-    }
+  public func encode(to encoder: Encoder) throws {
+    var container = encoder.container(keyedBy: TimestampKeys.self)
+    try container.encode(seconds, forKey: .seconds)
+    try container.encode(nanoseconds, forKey: .nanoseconds)
+  }
 }
 
 /** Extends Timestamp to conform to Codable. */

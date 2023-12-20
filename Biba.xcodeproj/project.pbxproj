@@ -88,6 +88,20 @@
 			path = Firebase;
 			sourceTree = "<group>";
 		};
+		E859A90C2B3294FA007E258C /* App */ = {
+			isa = PBXGroup;
+			children = (
+				E859A8F52B316407007E258C /* Config */,
+				E859A9072B317722007E258C /* Firebase */,
+				E8D856BB2B2EFAA9005D2E9F /* AppDelegate.swift */,
+				E8D856BD2B2EFAA9005D2E9F /* SceneDelegate.swift */,
+				E8D856C42B2EFAAA005D2E9F /* Assets.xcassets */,
+				E8D856C62B2EFAAA005D2E9F /* LaunchScreen.storyboard */,
+				E8D856C92B2EFAAA005D2E9F /* Info.plist */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
 		E8D856AF2B2EFAA9005D2E9F = {
 			isa = PBXGroup;
 			children = (
@@ -101,13 +115,7 @@
 		E8D856BA2B2EFAA9005D2E9F /* Biba */ = {
 			isa = PBXGroup;
 			children = (
-				E859A8F52B316407007E258C /* Config */,
-				E859A9072B317722007E258C /* Firebase */,
-				E8D856BB2B2EFAA9005D2E9F /* AppDelegate.swift */,
-				E8D856BD2B2EFAA9005D2E9F /* SceneDelegate.swift */,
-				E8D856C42B2EFAAA005D2E9F /* Assets.xcassets */,
-				E8D856C62B2EFAAA005D2E9F /* LaunchScreen.storyboard */,
-				E8D856C92B2EFAAA005D2E9F /* Info.plist */,
+				E859A90C2B3294FA007E258C /* App */,
 				E8D856CF2B2EFB31005D2E9F /* MainViewController.swift */,
 			);
 			path = Biba;

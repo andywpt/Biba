@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C50C881F83F0D6AB13F39FCC /* Pods_Biba.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7157354F810CA6AF2DD4D79F /* Pods_Biba.framework */; };
+		E80366CE2B335DD90067F86B /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80366CD2B335DD90067F86B /* Test.swift */; };
 		E859A90B2B31F9C3007E258C /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = E859A90A2B31F9C3007E258C /* Config.swift */; };
 		E8D856BC2B2EFAA9005D2E9F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D856BB2B2EFAA9005D2E9F /* AppDelegate.swift */; };
 		E8D856BE2B2EFAA9005D2E9F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D856BD2B2EFAA9005D2E9F /* SceneDelegate.swift */; };
@@ -21,6 +22,7 @@
 		1618B13488A62D9059046DF0 /* Pods-Biba.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Biba.debug.xcconfig"; path = "Target Support Files/Pods-Biba/Pods-Biba.debug.xcconfig"; sourceTree = "<group>"; };
 		7157354F810CA6AF2DD4D79F /* Pods_Biba.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Biba.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E80366CA2B3352D80067F86B /* pre-commit.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "pre-commit.sh"; sourceTree = "<group>"; };
+		E80366CD2B335DD90067F86B /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		E840D5912B3022EC00AEDFB4 /* Config.stencil */ = {isa = PBXFileReference; lastKnownFileType = text; path = Config.stencil; sourceTree = "<group>"; };
 		E842330A2B30729C0027D863 /* Biba-Stage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Biba-Stage.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E859A8EC2B3135DC007E258C /* config.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = config.sh; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				E80366CA2B3352D80067F86B /* pre-commit.sh */,
+				E80366CD2B335DD90067F86B /* Test.swift */,
 			);
 			path = GitHooks;
 			sourceTree = "<group>";
@@ -301,6 +304,7 @@
 			files = (
 				E8D856BC2B2EFAA9005D2E9F /* AppDelegate.swift in Sources */,
 				E859A90B2B31F9C3007E258C /* Config.swift in Sources */,
+				E80366CE2B335DD90067F86B /* Test.swift in Sources */,
 				E8D856BE2B2EFAA9005D2E9F /* SceneDelegate.swift in Sources */,
 				E8D856D02B2EFB31005D2E9F /* MainViewController.swift in Sources */,
 			);

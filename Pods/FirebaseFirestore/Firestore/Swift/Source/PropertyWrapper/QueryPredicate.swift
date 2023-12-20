@@ -15,9 +15,9 @@
  */
 
 #if SWIFT_PACKAGE
-  @_exported import FirebaseFirestoreInternalWrapper
+    @_exported import FirebaseFirestoreInternalWrapper
 #else
-  @_exported import FirebaseFirestoreInternal
+    @_exported import FirebaseFirestoreInternal
 #endif // SWIFT_PACKAGE
 
 /// Query predicates that can be used to filter results fetched by `FirestoreQuery`.
@@ -28,115 +28,119 @@
 ///     let onlyFavourites2: QueryPredicate = .isEqualTo("isFavourite", true)
 ///     let onlyFavourites3: QueryPredicate = .where("isFavourite", isEqualTo: true)
 public enum QueryPredicate {
-  case isEqualTo(_ field: String, _ value: Any)
+    case isEqualTo(_ field: String, _ value: Any)
 
-  case isIn(_ field: String, _ values: [Any])
-  case isNotIn(_ field: String, _ values: [Any])
+    case isIn(_ field: String, _ values: [Any])
+    case isNotIn(_ field: String, _ values: [Any])
 
-  case arrayContains(_ field: String, _ value: Any)
-  case arrayContainsAny(_ field: String, _ values: [Any])
+    case arrayContains(_ field: String, _ value: Any)
+    case arrayContainsAny(_ field: String, _ values: [Any])
 
-  case isLessThan(_ field: String, _ value: Any)
-  case isGreaterThan(_ field: String, _ value: Any)
+    case isLessThan(_ field: String, _ value: Any)
+    case isGreaterThan(_ field: String, _ value: Any)
 
-  case isLessThanOrEqualTo(_ field: String, _ value: Any)
-  case isGreaterThanOrEqualTo(_ field: String, _ value: Any)
+    case isLessThanOrEqualTo(_ field: String, _ value: Any)
+    case isGreaterThanOrEqualTo(_ field: String, _ value: Any)
 
-  case orderBy(_ field: String, _ value: Bool)
+    case orderBy(_ field: String, _ value: Bool)
 
-  case limitTo(_ value: Int)
-  case limitToLast(_ value: Int)
+    case limitTo(_ value: Int)
+    case limitToLast(_ value: Int)
 
-  /*
-   Factory methods
-   */
-  public static func whereField(_ field: String, isEqualTo value: Any) -> QueryPredicate {
-    .isEqualTo(field, value)
-  }
+    /*
+     Factory methods
+     */
+    public static func whereField(_ field: String, isEqualTo value: Any) -> QueryPredicate {
+        .isEqualTo(field, value)
+    }
 
-  public static func whereField(_ field: String, isIn values: [Any]) -> QueryPredicate {
-    .isIn(field, values)
-  }
+    public static func whereField(_ field: String, isIn values: [Any]) -> QueryPredicate {
+        .isIn(field, values)
+    }
 
-  public static func whereField(_ field: String, isNotIn values: [Any]) -> QueryPredicate {
-    .isNotIn(field, values)
-  }
+    public static func whereField(_ field: String, isNotIn values: [Any]) -> QueryPredicate {
+        .isNotIn(field, values)
+    }
 
-  public static func whereField(_ field: String, arrayContains value: Any) -> QueryPredicate {
-    .arrayContains(field, value)
-  }
+    public static func whereField(_ field: String, arrayContains value: Any) -> QueryPredicate {
+        .arrayContains(field, value)
+    }
 
-  public static func whereField(_ field: String,
-                                arrayContainsAny values: [Any]) -> QueryPredicate {
-    .arrayContainsAny(field, values)
-  }
+    public static func whereField(_ field: String,
+                                  arrayContainsAny values: [Any]) -> QueryPredicate
+    {
+        .arrayContainsAny(field, values)
+    }
 
-  public static func whereField(_ field: String, isLessThan value: Any) -> QueryPredicate {
-    .isLessThan(field, value)
-  }
+    public static func whereField(_ field: String, isLessThan value: Any) -> QueryPredicate {
+        .isLessThan(field, value)
+    }
 
-  public static func whereField(_ field: String, isGreaterThan value: Any) -> QueryPredicate {
-    .isGreaterThan(field, value)
-  }
+    public static func whereField(_ field: String, isGreaterThan value: Any) -> QueryPredicate {
+        .isGreaterThan(field, value)
+    }
 
-  public static func whereField(_ field: String,
-                                isLessThanOrEqualTo value: Any) -> QueryPredicate {
-    .isLessThanOrEqualTo(field, value)
-  }
+    public static func whereField(_ field: String,
+                                  isLessThanOrEqualTo value: Any) -> QueryPredicate
+    {
+        .isLessThanOrEqualTo(field, value)
+    }
 
-  public static func whereField(_ field: String,
-                                isGreaterThanOrEqualTo value: Any) -> QueryPredicate {
-    .isGreaterThanOrEqualTo(field, value)
-  }
+    public static func whereField(_ field: String,
+                                  isGreaterThanOrEqualTo value: Any) -> QueryPredicate
+    {
+        .isGreaterThanOrEqualTo(field, value)
+    }
 
-  public static func order(by field: String, descending value: Bool = false) -> QueryPredicate {
-    .orderBy(field, value)
-  }
+    public static func order(by field: String, descending value: Bool = false) -> QueryPredicate {
+        .orderBy(field, value)
+    }
 
-  public static func limit(to value: Int) -> QueryPredicate {
-    .limitTo(value)
-  }
+    public static func limit(to value: Int) -> QueryPredicate {
+        .limitTo(value)
+    }
 
-  public static func limit(toLast value: Int) -> QueryPredicate {
-    .limitToLast(value)
-  }
+    public static func limit(toLast value: Int) -> QueryPredicate {
+        .limitToLast(value)
+    }
 
-  // Alternate naming
+    // Alternate naming
 
-  public static func `where`(_ name: String, isEqualTo value: Any) -> QueryPredicate {
-    .isEqualTo(name, value)
-  }
+    public static func `where`(_ name: String, isEqualTo value: Any) -> QueryPredicate {
+        .isEqualTo(name, value)
+    }
 
-  public static func `where`(_ name: String, isIn values: [Any]) -> QueryPredicate {
-    .isIn(name, values)
-  }
+    public static func `where`(_ name: String, isIn values: [Any]) -> QueryPredicate {
+        .isIn(name, values)
+    }
 
-  public static func `where`(_ name: String, isNotIn values: [Any]) -> QueryPredicate {
-    .isNotIn(name, values)
-  }
+    public static func `where`(_ name: String, isNotIn values: [Any]) -> QueryPredicate {
+        .isNotIn(name, values)
+    }
 
-  public static func `where`(field name: String, arrayContains value: Any) -> QueryPredicate {
-    .arrayContains(name, value)
-  }
+    public static func `where`(field name: String, arrayContains value: Any) -> QueryPredicate {
+        .arrayContains(name, value)
+    }
 
-  public static func `where`(_ name: String, arrayContainsAny values: [Any]) -> QueryPredicate {
-    .arrayContainsAny(name, values)
-  }
+    public static func `where`(_ name: String, arrayContainsAny values: [Any]) -> QueryPredicate {
+        .arrayContainsAny(name, values)
+    }
 
-  public static func `where`(_ name: String, isLessThan value: Any) -> QueryPredicate {
-    .isLessThan(name, value)
-  }
+    public static func `where`(_ name: String, isLessThan value: Any) -> QueryPredicate {
+        .isLessThan(name, value)
+    }
 
-  public static func `where`(_ name: String, isGreaterThan value: Any) -> QueryPredicate {
-    .isGreaterThan(name, value)
-  }
+    public static func `where`(_ name: String, isGreaterThan value: Any) -> QueryPredicate {
+        .isGreaterThan(name, value)
+    }
 
-  public static func `where`(_ name: String, isLessThanOrEqualTo value: Any) -> QueryPredicate {
-    .isLessThanOrEqualTo(name, value)
-  }
+    public static func `where`(_ name: String, isLessThanOrEqualTo value: Any) -> QueryPredicate {
+        .isLessThanOrEqualTo(name, value)
+    }
 
-  public static func `where`(_ name: String,
-                             isGreaterThanOrEqualTo value: Any) -> QueryPredicate {
-    .isGreaterThanOrEqualTo(name, value)
-  }
+    public static func `where`(_ name: String,
+                               isGreaterThanOrEqualTo value: Any) -> QueryPredicate
+    {
+        .isGreaterThanOrEqualTo(name, value)
+    }
 }

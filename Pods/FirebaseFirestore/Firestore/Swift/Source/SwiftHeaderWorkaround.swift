@@ -13,9 +13,9 @@
 // limitations under the License.
 
 #if SWIFT_PACKAGE
-  @_exported import FirebaseFirestoreInternalWrapper
+    @_exported import FirebaseFirestoreInternalWrapper
 #else
-  @_exported import FirebaseFirestoreInternal
+    @_exported import FirebaseFirestoreInternal
 #endif // SWIFT_PACKAGE
 
 // This is a trick to force generate a `FirebaseFirestore-Swift.h`
@@ -28,5 +28,5 @@
 // clients and is therefore unavailable in a Swift context.
 @available(*, unavailable)
 @objc public extension Firestore {
-  static var __no_op: () -> Void { {} }
+    static var __no_op: () -> Void { {} }
 }

@@ -15,9 +15,9 @@
  */
 
 #if SWIFT_PACKAGE
-  @_exported import FirebaseFirestoreInternalWrapper
+    @_exported import FirebaseFirestoreInternalWrapper
 #else
-  @_exported import FirebaseFirestoreInternal
+    @_exported import FirebaseFirestoreInternal
 #endif // SWIFT_PACKAGE
 
 /**
@@ -29,16 +29,16 @@
  * protocol sidesteps this issue.
  */
 private protocol CodableGeoPoint: Codable {
-  var latitude: Double { get }
-  var longitude: Double { get }
+    var latitude: Double { get }
+    var longitude: Double { get }
 
-  init(latitude: Double, longitude: Double)
+    init(latitude: Double, longitude: Double)
 }
 
 /** The keys in a GeoPoint. Must match the properties of CodableGeoPoint. */
 private enum GeoPointKeys: String, CodingKey {
-  case latitude
-  case longitude
+    case latitude
+    case longitude
 }
 
 /**
@@ -48,18 +48,18 @@ private enum GeoPointKeys: String, CodingKey {
  * when declaring an extension to conform to Codable.
  */
 extension CodableGeoPoint {
-  public init(from decoder: Decoder) throws {
-    let container = try decoder.container(keyedBy: GeoPointKeys.self)
-    let latitude = try container.decode(Double.self, forKey: .latitude)
-    let longitude = try container.decode(Double.self, forKey: .longitude)
-    self.init(latitude: latitude, longitude: longitude)
-  }
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: GeoPointKeys.self)
+        let latitude = try container.decode(Double.self, forKey: .latitude)
+        let longitude = try container.decode(Double.self, forKey: .longitude)
+        self.init(latitude: latitude, longitude: longitude)
+    }
 
-  public func encode(to encoder: Encoder) throws {
-    var container = encoder.container(keyedBy: GeoPointKeys.self)
-    try container.encode(latitude, forKey: .latitude)
-    try container.encode(longitude, forKey: .longitude)
-  }
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: GeoPointKeys.self)
+        try container.encode(latitude, forKey: .latitude)
+        try container.encode(longitude, forKey: .longitude)
+    }
 }
 
 /** Extends GeoPoint to conform to Codable. */

@@ -15,20 +15,20 @@
  */
 
 #if SWIFT_PACKAGE
-  @_exported import FirebaseFirestoreInternalWrapper
+    @_exported import FirebaseFirestoreInternalWrapper
 #else
-  @_exported import FirebaseFirestoreInternal
+    @_exported import FirebaseFirestoreInternal
 #endif // SWIFT_PACKAGE
 
 import FirebaseSharedSwift
 import Foundation
 
 public extension FirebaseDataEncoder.DateEncodingStrategy {
-  /// Encode the `Date` as a Firestore `Timestamp`.
-  static var timestamp: FirebaseDataEncoder.DateEncodingStrategy {
-    return .custom { date, encoder in
-      var container = encoder.singleValueContainer()
-      try container.encode(Timestamp(date: date))
+    /// Encode the `Date` as a Firestore `Timestamp`.
+    static var timestamp: FirebaseDataEncoder.DateEncodingStrategy {
+        return .custom { date, encoder in
+            var container = encoder.singleValueContainer()
+            try container.encode(Timestamp(date: date))
+        }
     }
-  }
 }

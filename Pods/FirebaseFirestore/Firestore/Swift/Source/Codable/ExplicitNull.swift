@@ -15,9 +15,9 @@
  */
 
 #if SWIFT_PACKAGE
-  @_exported import FirebaseFirestoreInternalWrapper
+    @_exported import FirebaseFirestoreInternalWrapper
 #else
-  @_exported import FirebaseFirestoreInternal
+    @_exported import FirebaseFirestoreInternal
 #endif // SWIFT_PACKAGE
 
 /// Wraps an `Optional` field in a `Codable` object such that when the field
@@ -28,16 +28,16 @@
 /// even when there is no associated value.
 @propertyWrapper
 public struct ExplicitNull<Value> {
-  var value: Value?
+    var value: Value?
 
-  public init(wrappedValue value: Value?) {
-    self.value = value
-  }
+    public init(wrappedValue value: Value?) {
+        self.value = value
+    }
 
-  public var wrappedValue: Value? {
-    get { value }
-    set { value = newValue }
-  }
+    public var wrappedValue: Value? {
+        get { value }
+        set { value = newValue }
+    }
 }
 
 extension ExplicitNull: Equatable where Value: Equatable {}
@@ -45,23 +45,23 @@ extension ExplicitNull: Equatable where Value: Equatable {}
 extension ExplicitNull: Hashable where Value: Hashable {}
 
 extension ExplicitNull: Encodable where Value: Encodable {
-  public func encode(to encoder: Encoder) throws {
-    var container = encoder.singleValueContainer()
-    if let value = value {
-      try container.encode(value)
-    } else {
-      try container.encodeNil()
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.singleValueContainer()
+        if let value = value {
+            try container.encode(value)
+        } else {
+            try container.encodeNil()
+        }
     }
-  }
 }
 
 extension ExplicitNull: Decodable where Value: Decodable {
-  public init(from decoder: Decoder) throws {
-    let container = try decoder.singleValueContainer()
-    if container.decodeNil() {
-      value = nil
-    } else {
-      value = try container.decode(Value.self)
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        if container.decodeNil() {
+            value = nil
+        } else {
+            value = try container.decode(Value.self)
+        }
     }
-  }
 }

@@ -16,19 +16,19 @@
 
 import Foundation
 #if SWIFT_PACKAGE
-  @_exported import FirebaseFirestoreInternalWrapper
+    @_exported import FirebaseFirestoreInternalWrapper
 #else
-  @_exported import FirebaseFirestoreInternal
+    @_exported import FirebaseFirestoreInternal
 #endif // SWIFT_PACKAGE
 import FirebaseSharedSwift
 
 public extension FirebaseDataDecoder.DateDecodingStrategy {
-  /// Decode the `Date` from a Firestore `Timestamp`
-  static var timestamp: FirebaseDataDecoder.DateDecodingStrategy {
-    return .custom { decoder in
-      let container = try decoder.singleValueContainer()
-      let value = try container.decode(Timestamp.self)
-      return value.dateValue()
+    /// Decode the `Date` from a Firestore `Timestamp`
+    static var timestamp: FirebaseDataDecoder.DateDecodingStrategy {
+        return .custom { decoder in
+            let container = try decoder.singleValueContainer()
+            let value = try container.decode(Timestamp.self)
+            return value.dateValue()
+        }
     }
-  }
 }

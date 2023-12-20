@@ -28,4 +28,8 @@ fi
 arguments=$(sed -n 's/=/ /p' $file | awk '{printf "%s=\"%s\",", $1, $2}' | sed 's/,$//')
 
 # Run Sourcery Codegen
-$PODS_ROOT/Sourcery/bin/sourcery --templates $TEMPLATE_PATH --sources $CONFIG_PATH --output $OUTPUT_PATH --args $arguments
+$PODS_ROOT/Sourcery/bin/sourcery \
+    --templates $TEMPLATE_PATH \
+    --sources $CONFIG_PATH \
+    --output $OUTPUT_PATH \
+    --args $arguments

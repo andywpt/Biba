@@ -81,8 +81,8 @@
 		E859A9072B317722007E258C /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
-				E859A9062B317716007E258C /* GoogleService-Info-Stage.plist */,
 				E859A9052B3176EF007E258C /* GoogleService-Info-Prod.plist */,
+				E859A9062B317716007E258C /* GoogleService-Info-Stage.plist */,
 				E8D856E12B2F280E005D2E9F /* firebase.sh */,
 			);
 			path = Firebase;
@@ -404,7 +404,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1618B13488A62D9059046DF0 /* Pods-Biba.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Stage";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;

@@ -20,6 +20,7 @@
 		0B32800DCC46F0B719DBAB26 /* Pods-Biba.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Biba.release.xcconfig"; path = "Target Support Files/Pods-Biba/Pods-Biba.release.xcconfig"; sourceTree = "<group>"; };
 		1618B13488A62D9059046DF0 /* Pods-Biba.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Biba.debug.xcconfig"; path = "Target Support Files/Pods-Biba/Pods-Biba.debug.xcconfig"; sourceTree = "<group>"; };
 		7157354F810CA6AF2DD4D79F /* Pods_Biba.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Biba.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E80366CA2B3352D80067F86B /* pre-commit.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "pre-commit.sh"; sourceTree = "<group>"; };
 		E840D5912B3022EC00AEDFB4 /* Config.stencil */ = {isa = PBXFileReference; lastKnownFileType = text; path = Config.stencil; sourceTree = "<group>"; };
 		E842330A2B30729C0027D863 /* Biba-Stage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Biba-Stage.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E859A8EC2B3135DC007E258C /* config.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = config.sh; sourceTree = "<group>"; };
@@ -64,6 +65,30 @@
 				0B32800DCC46F0B719DBAB26 /* Pods-Biba.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		E80366C72B3351F50067F86B /* Scripts */ = {
+			isa = PBXGroup;
+			children = (
+				E80366C92B3352900067F86B /* GitHooks */,
+				E80366C82B3352810067F86B /* BuildPhase */,
+			);
+			path = Scripts;
+			sourceTree = "<group>";
+		};
+		E80366C82B3352810067F86B /* BuildPhase */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = BuildPhase;
+			sourceTree = "<group>";
+		};
+		E80366C92B3352900067F86B /* GitHooks */ = {
+			isa = PBXGroup;
+			children = (
+				E80366CA2B3352D80067F86B /* pre-commit.sh */,
+			);
+			path = GitHooks;
 			sourceTree = "<group>";
 		};
 		E859A8F52B316407007E258C /* Config */ = {
@@ -115,6 +140,7 @@
 		E8D856BA2B2EFAA9005D2E9F /* Biba */ = {
 			isa = PBXGroup;
 			children = (
+				E80366C72B3351F50067F86B /* Scripts */,
 				E859A90C2B3294FA007E258C /* App */,
 				E8D856CF2B2EFB31005D2E9F /* MainViewController.swift */,
 			);
@@ -129,11 +155,11 @@
 			buildConfigurationList = E8D856CC2B2EFAAA005D2E9F /* Build configuration list for PBXNativeTarget "Biba" */;
 			buildPhases = (
 				0AD02421819ADCF4345A66AE /* [CP] Check Pods Manifest.lock */,
+				E8D856E02B2F10E7005D2E9F /* Firebase Script */,
 				E859A8ED2B3135F6007E258C /* Config Script */,
 				E8D856B42B2EFAA9005D2E9F /* Sources */,
 				E8D856B52B2EFAA9005D2E9F /* Frameworks */,
 				E8D856B62B2EFAA9005D2E9F /* Resources */,
-				E8D856E02B2F10E7005D2E9F /* Firebase Script */,
 				A603FDB91FF67DE0FE3D7AA0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (

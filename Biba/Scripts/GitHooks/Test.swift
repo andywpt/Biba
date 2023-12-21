@@ -8,5 +8,5 @@
 import Foundation
 
 struct Brrst{
-    let num = 5
-    let p :Int = 0    }
+    let sum = 5
+    let punp :Int = 0    }

@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct Brrst{
-    let sum = 5
+struct Brrrrrst{
+    let surrrm = 5
     let punp :Int = 0    }

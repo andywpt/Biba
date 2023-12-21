@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct Test{
-    let num = 4
+struct Best{
+    let num = 5
 }

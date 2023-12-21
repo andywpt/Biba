@@ -8,5 +8,5 @@
 import Foundation
 
 struct Test{
-    let num = 3
+    let num = 4
 }

@@ -8,5 +8,7 @@
 
 #!/bin/bash
 # pass information which files to be excluded to git-format-stages as --exclude option in .swiftformat config file is not honored by git-format-staged
-echo "running pre-commit hook"
-npx git-format-staged --formatter 'swiftformat stdin --stdinpath "{}"' '*.swift' '!Pods/*'
+#!/bin/bash
+# pass information which files to be excluded to git-format-stages as --exclude option in .swiftformat config file is not honored by git-format-staged
+npx git-format-staged --formatter 'swiftformat stdin --stdinpath "{}"' '${PROJECT_DIR}/${TARGET_NAME}/*.swift' '!Pods/*'
+

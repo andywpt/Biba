@@ -6,11 +6,9 @@
 #  Created by Andy Wu on 2023/12/21.
 #  
 
-#!/bin/bash
 # pass information which files to be excluded to git-format-stages as --exclude option in .swiftformat config file is not honored by git-format-staged
-#!/bin/bash
 # pass information which files to be excluded to git-format-stages as --exclude option in .swiftformat config file is not honored by git-format-staged
-#git-format-staged --formatter "swiftformat stdin --stdinpath '{}'" "*.swift"
+# git-format-staged --formatter "swiftformat stdin --stdinpath '{}'" "*.swift"
 
 git diff --diff-filter=d --staged --name-only | grep -e '\(.*\).swift$' | while read line; do
     swift-format -m format -i "${line}";

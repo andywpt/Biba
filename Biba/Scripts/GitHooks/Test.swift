@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Brrst      {
+struct Brrst {
   let surrrfcfferm = 5
   let punp: Int = 0
 }

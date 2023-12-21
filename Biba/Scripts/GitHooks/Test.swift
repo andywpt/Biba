@@ -9,4 +9,5 @@ import Foundation
 
 struct Best{
     let num = 5
+    let p :Int = 0
 }

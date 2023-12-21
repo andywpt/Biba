@@ -7,7 +7,6 @@
 
 import Foundation
 
-struct Best{
+struct Brst{
     let num = 5
-    let p :Int = 0
-}
+    let p :Int = 0}

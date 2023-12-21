@@ -11,7 +11,8 @@
 # git-format-staged --formatter "swiftformat stdin --stdinpath '{}'" "*.swift"
 
 export PATH="$PATH:/opt/homebrew/bin"
+
 git diff --diff-filter=d --staged --name-only | grep -e '\(.*\).swift$' | while read line; do
-        swift-format -i "${line}";
-        git add "$line";
+    swift-format -m format -i "${line}";
+    git add "$line";
 done

@@ -18,6 +18,14 @@ jobs:
         with:
           ruby-version: 3.2.1
           bundler-cache: true
+
+      - name: Add .env file
+        run: |
+          touch .env
+          echo APP_ID=${{ secrets.TAPPAY_APP_ID }} >> .env
+          echo APP_KEY=${{ secrets.TAPPAY_APP_KEY }} >> .env
+          cat .env
+          ls -a
           
       - name: Setup project
         run: |
@@ -39,14 +47,6 @@ jobs:
           APPLE_CERTIFICATE: certificate.p12
         run: bundle exec fastlane ios build_upload_testflight
          
-      - name: 'Create env file in Biba folder'
-        run: |
-          cd Biba/App/
-          touch .env
-          echo API_ENDPOINT="https://xxx.execute-api.us-west-2.amazonaws.com" >> .env
-          echo APP_KEY=${{ secrets.TAPPAY_APP_KEY }} >> .env
-          cat .env
-          ls -1
       - name: Access code files
         run: |
           # Now you can access your code files, for example, display the content of "Biba" file

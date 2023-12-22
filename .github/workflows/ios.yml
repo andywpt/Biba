@@ -20,7 +20,9 @@ jobs:
           bundler-cache: true
           
       - name: Setup project
-        run: ruby start.rb
+        run: |
+          gem install xcodeproj
+          ruby start.rb
           
       - name: Decode signing certificate into a file
         env:

@@ -77,7 +77,7 @@ platform :ios do
         use_automatic_signing: false,
         code_sign_identity: "Apple Distribution",
         bundle_identifier: app_identifier,
-        profile_name: "Biba dev",
+        profile_name: "Biba Wild",
         build_configurations: ["Release"]
     )
 

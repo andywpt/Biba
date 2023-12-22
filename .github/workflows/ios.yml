@@ -12,18 +12,31 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Setup project
+        run: ruby start.rb 
         
       - name: Set up ruby environment
         uses: ruby/setup-ruby@v1.138.0
         with:
           ruby-version: 3.2.1
           bundler-cache: true
+          
       - name: Decode signing certificate into a file
         env:
           CERTIFICATE_BASE64: ${{ secrets.APPLE_CERTIFICATE }}
         run: |
           echo $CERTIFICATE_BASE64 | base64 --decode > certificate.p12
-          echo Done
+
+      - name: Build & upload iOS binary
+        env:
+          APPSTORE_API_KEY_ID: ${{ secrets.APPSTORE_API_KEY_ID }}
+          APPSTORE_API_ISSUER_ID: ${{ secrets.APPSTORE_API_ISSUER_ID }}
+          APPSTORE_API_PRIVATE_KEY: ${{ secrets.APPSTORE_API_PRIVATE_KEY }}
+          APPLE_CERTIFICATE_PASSWORD: ${{ secrets.APPLE_CERTIFICATE_PASSWORD }}
+          APPLE_CERTIFICATE: certificate.p12
+        run: bundle exec fastlane ios build_upload_testflight
+         
       - name: 'Create env file in Biba folder'
         run: |
           cd Biba/App/

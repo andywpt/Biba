@@ -88,10 +88,7 @@ platform :ios do
         output_name: output_name,
         configuration: "Release",
         export_options: {
-            method: export_method,
-            provisioningProfiles: {
-                app_identifier => "Biba Provisioning Profile"
-            }
+            method: export_method
         }
     )
 end

@@ -81,7 +81,7 @@ platform :ios do
         build_configurations: ["Release"]
     )
 
-    # build the app !
+    # build the app
     gym(
         scheme: "Biba", # replace with name of your project’s scheme
         output_name: output_name,
@@ -89,7 +89,7 @@ platform :ios do
         export_options: {
             method: export_method,
             provisioningProfiles: {
-                app_identifier => "Biba Provisioning Profile" # here you can add any additional bundle identifiers and their associated provisioning profiles if you’re also building an app extension or other bundle identifier
+                app_identifier => "Biba Provisioning Profile"
             }
         }
     )

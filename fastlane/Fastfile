@@ -61,11 +61,12 @@ platform :ios do
    )
 
    # fetches and installs provisioning profiles from ASC
-   sigh(
-     adhoc: options[:adhoc],
+   result = sigh(
+     adhoc: true,
      api_key: api_key,
      readonly: true
    )
+   puts result
  end
 
  desc "Build the iOS app for release"
@@ -77,7 +78,7 @@ platform :ios do
         use_automatic_signing: false,
         code_sign_identity: "Apple Distribution",
         bundle_identifier: app_identifier,
-        profile_name: "Biba Wild",
+        profile_name: "Biba Ad",
         build_configurations: ["Release"]
     )
 

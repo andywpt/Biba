@@ -13,7 +13,8 @@ platform :ios do
      key_id: ENV["APPSTORE_API_KEY_ID"],
      issuer_id: ENV["APPSTORE_API_ISSUER_ID"],
      key_content: ENV["APPSTORE_API_PRIVATE_KEY"],
-     is_key_content_base64: true
+     is_key_content_base64: true,
+     in_house: false
    )
  end
  desc "Bump build number based on most recent TestFlight build number"
@@ -88,7 +89,8 @@ platform :ios do
         output_name: output_name,
         configuration: "Release",
         export_options: {
-            method: export_method
+            method: export_method,
+            testFlightInternalTestingOnly: true
         }
     )
 end

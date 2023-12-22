@@ -38,11 +38,9 @@ class MainViewController: UIViewController {
     if Config.environment == "正式環境" {
       view.backgroundColor = .white
       label.textColor = .black
-    } else if Config.environment == "測試環境" {
+    } else  {
       view.backgroundColor = .black
       label.textColor = .white
-    } else {
-      fatalError("Configffvfv.environment missing")
-    }
+    } 
   }
 }

@@ -33,3 +33,5 @@ $PODS_ROOT/Sourcery/bin/sourcery \
     --sources $CONFIG_PATH \
     --output $OUTPUT_PATH \
     --args $arguments
+
+    

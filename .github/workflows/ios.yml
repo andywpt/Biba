@@ -1,10 +1,7 @@
 name: iOS starter workflow
 
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+  workflow_dispatch:
 
 jobs:
   build:
@@ -14,9 +11,22 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
-      - name: 'Create env file'
+        uses: actions/checkout@v4
+        
+      - name: Set up ruby environment
+        uses: ruby/setup-ruby@v1.138.0
+        with:
+          ruby-version: 3.2.1
+          bundler-cache: true
+      - name: Decode signing certificate into a file
+        env:
+          CERTIFICATE_BASE64: ${{ secrets.APPLE_CERTIFICATE }}
         run: |
+          echo $CERTIFICATE_BASE64 | base64 --decode > certificate.p12
+          echo Done
+      - name: 'Create env file in Biba folder'
+        run: |
+          cd Biba/App/
           touch .env
           echo API_ENDPOINT="https://xxx.execute-api.us-west-2.amazonaws.com" >> .env
           echo APP_KEY=${{ secrets.TAPPAY_APP_KEY }} >> .env
@@ -26,3 +36,4 @@ jobs:
         run: |
           # Now you can access your code files, for example, display the content of "Biba" file
           ls -1
+     

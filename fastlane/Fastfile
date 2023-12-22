@@ -64,7 +64,8 @@ platform :ios do
    sigh(
      adhoc: options[:adhoc],
      api_key: api_key,
-     readonly: true
+     readonly: true,
+     provisioning_name: "my_profile_name"
    )
  end
 
@@ -78,7 +79,7 @@ platform :ios do
         use_automatic_signing: false,
         code_sign_identity: "Apple Distribution",
         bundle_identifier: app_identifier,
-        profile_name: profile_path,
+        profile_name: "my_profile_name",
         build_configurations: ["Release"]
     )
 

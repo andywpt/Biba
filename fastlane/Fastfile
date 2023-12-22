@@ -88,7 +88,8 @@ platform :ios do
         output_name: output_name,
         configuration: "Release",
         export_options: {
-            method: export_method
+            method: export_method,
+            testFlightInternalTestingOnly: true
         }
     )
 end

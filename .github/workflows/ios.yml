@@ -20,6 +20,7 @@ jobs:
           touch .env
           echo API_ENDPOINT="https://xxx.execute-api.us-west-2.amazonaws.com" >> .env
           echo APP_KEY=${{ secrets.TAPPAY_APP_KEY }} >> .env
+          cat .env
           ls -1
       - name: Access code files
         run: |

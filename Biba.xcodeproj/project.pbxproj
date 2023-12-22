@@ -27,8 +27,6 @@
 		E840D5912B3022EC00AEDFB4 /* Config.stencil */ = {isa = PBXFileReference; lastKnownFileType = text; path = Config.stencil; sourceTree = "<group>"; };
 		E842330A2B30729C0027D863 /* Biba-Stage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Biba-Stage.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E859A8EC2B3135DC007E258C /* config.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = config.sh; sourceTree = "<group>"; };
-		E859A8F62B316407007E258C /* .env.stage */ = {isa = PBXFileReference; lastKnownFileType = text; path = .env.stage; sourceTree = "<group>"; };
-		E859A8F72B316407007E258C /* .env */ = {isa = PBXFileReference; lastKnownFileType = text; path = .env; sourceTree = "<group>"; };
 		E859A9052B3176EF007E258C /* GoogleService-Info-Prod.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "GoogleService-Info-Prod.plist"; path = "/Users/andywu/Desktop/Biba/Biba/App/Firebase/GoogleService-Info-Prod.plist"; sourceTree = "<absolute>"; };
 		E859A9062B317716007E258C /* GoogleService-Info-Stage.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Stage.plist"; sourceTree = "<group>"; };
 		E8D856BB2B2EFAA9005D2E9F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -105,8 +103,6 @@
 		E859A8F52B316407007E258C /* Config */ = {
 			isa = PBXGroup;
 			children = (
-				E859A8F72B316407007E258C /* .env */,
-				E859A8F62B316407007E258C /* .env.stage */,
 				E840D5912B3022EC00AEDFB4 /* Config.stencil */,
 				E859A8EC2B3135DC007E258C /* config.sh */,
 				6DD9FF96C4B9D4E9B62FDB1F /* Config.swift */,

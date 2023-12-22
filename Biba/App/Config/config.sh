@@ -14,9 +14,9 @@ OUTPUT_PATH=$CONFIG_PATH/Config.swift
 
 file=""
 if [ "${CONFIGURATION}" == "Release" ] ; then
-    file=${CONFIG_PATH}/.env
+    file=${PROJECT_DIR}/.env
 else
-    file=${CONFIG_PATH}/.env.stage
+    file=${PROJECT_DIR}/.env.stage
 fi
 
 if [ ! -f $file ] ; then

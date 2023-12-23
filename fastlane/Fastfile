@@ -66,7 +66,6 @@ platform :ios do
 
    # fetches and installs provisioning profiles from ASC
    sigh(
-     adhoc: true,
      api_key: api_key,
      readonly: true
    )
@@ -81,7 +80,7 @@ platform :ios do
         use_automatic_signing: false,
         code_sign_identity: "Apple Distribution",
         bundle_identifier: app_identifier,
-        profile_name: "Biba Provisioning Profile",
+        profile_name: "Default",
         build_configurations: ["Release"]
     )
 
@@ -91,7 +90,7 @@ platform :ios do
         output_name: output_name,
         configuration: "Release",
         export_options: {
-            method: "ad-hoc",
+            method: "app-store",
             testFlightInternalTestingOnly: true
         }
     )

@@ -63,20 +63,22 @@ platform :ios do
      unlock: true,
      timeout: 3600
    )
-   p ENV["PATH"]
+
+   install_provisioning_profile(path: ENV["APP_PROVISION_PROFILE"])
+   profile_path = lane_context[SharedValues::SIGH_PROFILE_PATH]
+   profile_uuid = lane_context[SharedValues::SIGH_UUID]
+   profile_name = lane_context[SharedValues::SIGH_NAME]
+   p [profile_path,profile_uuid,profile_name]
+
    import_certificate(
-     certificate_path: "#{ENV["PATH"]}/#{ENV["APPLE_CERTIFICATE"]}",
+     certificate_path: ENV["APPLE_CERTIFICATE"],
      certificate_password: ENV["APPLE_CERTIFICATE_PASSWORD"],
      keychain_name: keychain_name,
      keychain_password: keychain_password,
      log_output: true
    )
    
-   install_provisioning_profile(path: "#{ENV["PATH"]}/#{ENV["APP_PROVISION_PROFILE"]}")
-   profile_path = lane_context[SharedValues::SIGH_PROFILE_PATH]
-   profile_uuid = lane_context[SharedValues::SIGH_UUID]
-   profile_name = lane_context[SharedValues::SIGH_NAME]
-   p [profile_path,profile_uuid,profile_name]
+   
    
    # fetches and installs provisioning profiles from ASC
    sigh(

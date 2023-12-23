@@ -89,7 +89,7 @@ platform :ios do
         output_name: output_name,
         configuration: "Release",
         export_options: {
-            method: "ad-hoc",
+            method: export_method,
             testFlightInternalTestingOnly: true
         }
     )

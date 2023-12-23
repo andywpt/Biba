@@ -64,12 +64,6 @@ platform :ios do
      timeout: 3600
    )
 
-   install_provisioning_profile(path: ENV["APP_PROVISION_PROFILE"])
-   profile_path = lane_context[SharedValues::SIGH_PROFILE_PATH]
-   profile_uuid = lane_context[SharedValues::SIGH_UUID]
-   profile_name = lane_context[SharedValues::SIGH_NAME]
-   p [profile_path,profile_uuid,profile_name]
-
    import_certificate(
      certificate_path: ENV["APPLE_CERTIFICATE"],
      certificate_password: ENV["APPLE_CERTIFICATE_PASSWORD"],
@@ -77,13 +71,15 @@ platform :ios do
      keychain_password: keychain_password,
      log_output: true
    )
-   
-   
-   
+  
    # fetches and installs provisioning profiles from ASC
    sigh(
      api_key: api_key
    )
+   profile_path = lane_context[SharedValues::SIGH_PROFILE_PATH]
+   profile_uuid = lane_context[SharedValues::SIGH_UUID]
+   profile_name = lane_context[SharedValues::SIGH_NAME]
+   p [profile_path,profile_uuid,profile_name]
  end
 
  desc "Build the iOS app for release"

@@ -48,6 +48,7 @@ jobs:
           APPLE_CERTIFICATE_PASSWORD: ${{ secrets.APPLE_CERTIFICATE_PASSWORD }}
           APPLE_CERTIFICATE: certificate.p12
           APP_PROVISION_PROFILE: profile.mobileprovision
+          PWD: pwd
         run: bundle exec fastlane ios build_upload_testflight
          
       - name: Access code files

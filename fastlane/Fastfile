@@ -90,8 +90,9 @@ platform :ios do
         output_name: output_name,
         configuration: "Release",
         export_options: {
-            method: "app-store",
-            testFlightInternalTestingOnly: true
+          method: options[:export_method],
+          testFlightInternalTestingOnly: true,
+          provisioningProfiles: { "com.biba": "Default" }
         }
     )
 end

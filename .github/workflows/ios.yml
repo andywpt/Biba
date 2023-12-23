@@ -25,7 +25,6 @@ jobs:
           echo APP_ID=${{ secrets.TAPPAY_APP_ID }} >> .env
           echo APP_KEY=${{ secrets.TAPPAY_APP_KEY }} >> .env
           cat .env
-          ls -a
           
       - name: Setup project
         run: |
@@ -37,6 +36,7 @@ jobs:
           CERTIFICATE_BASE64: ${{ secrets.APPLE_CERTIFICATE }}
         run: |
           echo $CERTIFICATE_BASE64 | base64 --decode > certificate.p12
+          ls -1
 
       - name: Build & upload iOS binary
         env:

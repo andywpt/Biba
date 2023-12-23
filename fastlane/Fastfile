@@ -119,6 +119,7 @@ end
  lane :build_upload_testflight do
     load_asc_api_key
     fetch_and_increment_build_number
+    prepare_signing
     build_release
     # upload_release
  end

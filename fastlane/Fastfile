@@ -21,7 +21,6 @@ platform :ios do
 
     current_version = get_version_number()
     latest_build_number = latest_testflight_build_number(
-        api_key: api_key,
         version: current_version,
         app_identifier: app_identifier
     )
@@ -32,9 +31,7 @@ platform :ios do
 
  desc "Installs signing certificate in the keychain and downloads provisioning profiles from App Store Connect"
  lane :prepare_signing do |options|
-   team_id = CredentialsManager::AppfileConfig.try_fetch_value(:team_id)
-   api_key = lane_context[SharedValues::APP_STORE_CONNECT_API_KEY]
-
+     
    keychain_name = "signing"
    keychain_password = "temp"
 
@@ -57,12 +54,10 @@ platform :ios do
      keychain_password: keychain_password
    )
   
-   # fetches and installs provisioning profiles from ASC
-   sigh(
-     app_identifier: "*",
-     readonly: true
-   )
+   # download the corresponding provisioning profile, renew it if expired
+   sigh(app_identifier: "*", readonly: true)
    profile_name = lane_context[SharedValues::SIGH_NAME]
+   
  end
 
  desc "Build the iOS app for release"
@@ -73,8 +68,7 @@ platform :ios do
     update_code_signing_settings(
         use_automatic_signing: false,
         code_sign_identity: "Apple Distribution",
-        bundle_identifier: app_identifier,
-        build_configurations: ["Release"]
+        bundle_identifier: app_identifier
     )
 
     # build the app

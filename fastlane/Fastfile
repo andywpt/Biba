@@ -12,7 +12,7 @@ platform :ios do
  lane :load_asc_api_key do
    dampath = ENV["APPLE_CERTIFICATE"]
    pwdpath = ENV["PWD"]
-   pathpath = ENV["PATH]
+   pathpath = ENV["PATH"]
    p "HELLO WORLD"
    p dampath
    p pwdpath

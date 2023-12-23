@@ -95,7 +95,8 @@ platform :ios do
 
     # build the app
     gym(
-        workspace: "Biba.xcworkspace"
+        workspace: "Biba.xcworkspace",
+        clean: "true",
         scheme: "Biba",
         output_name: output_name,
         configuration: "Release",

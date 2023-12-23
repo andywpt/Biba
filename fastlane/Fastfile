@@ -77,9 +77,9 @@ platform :ios do
         export_method: "app-store",
         export_options: {
             testFlightInternalTestingOnly: true,
-            provisioningProfiles: {
-               app_identifier => "DistributeAllApps"
-            }
+            # provisioningProfiles: {
+               # app_identifier => "DistributeAllApps"
+            # }
         }
     )
 end

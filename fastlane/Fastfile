@@ -79,7 +79,7 @@ platform :ios do
     update_code_signing_settings(
         use_automatic_signing: false,
         code_sign_identity: "Apple Distribution",
-        bundle_identifier: app_identifier
+        bundle_identifier: app_identifier,
         build_configurations: ["Release"]
     )
 

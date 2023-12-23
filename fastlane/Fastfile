@@ -74,7 +74,8 @@ platform :ios do
   
    # fetches and installs provisioning profiles from ASC
    sigh(
-     api_key: api_key
+     api_key: api_key,
+     app_identifier: "*"
    )
    profile_path = lane_context[SharedValues::SIGH_PROFILE_PATH]
    profile_uuid = lane_context[SharedValues::SIGH_UUID]

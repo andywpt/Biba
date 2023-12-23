@@ -64,10 +64,7 @@ platform :ios do
      
     output_name = "biba.ipa" # specify the name of the .ipa file to generate
     
-    update_code_signing_settings(
-        use_automatic_signing: false,
-        code_sign_identity: "Apple Distribution"
-    )
+    update_code_signing_settings(code_sign_identity: "Apple Distribution")
 
     # build the app
     gym(

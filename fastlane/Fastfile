@@ -81,6 +81,11 @@ platform :ios do
     app_identifier = CredentialsManager::AppfileConfig.try_fetch_value(:app_identifier)
     output_name = "example-iOS" # specify the name of the .ipa file to generate
     export_method = "app-store" # specify the export method
+
+    update_project_provisioning(
+        xcodeproj: "Biba.xcodeproj",
+        build_configuration: "Release"
+    )
     update_code_signing_settings(
         use_automatic_signing: false,
         code_sign_identity: "Apple Distribution",

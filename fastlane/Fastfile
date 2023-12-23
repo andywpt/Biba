@@ -57,12 +57,11 @@ platform :ios do
    # download the corresponding provisioning profile, renew it if expired
    sigh(app_identifier: "*", readonly: true)
    profile_name = lane_context[SharedValues::SIGH_NAME]
-   
  end
 
  desc "Build the iOS app for release"
  lane :build_release do |options|
-    app_identifier = CredentialsManager::AppfileConfig.try_fetch_value(:app_identifier)
+     
     output_name = "biba.ipa" # specify the name of the .ipa file to generate
     
     update_code_signing_settings(
@@ -72,7 +71,6 @@ platform :ios do
 
     # build the app
     gym(
-        workspace: "Biba.xcworkspace",
         scheme: "Biba",
         output_name: output_name,
         configuration: "Release",

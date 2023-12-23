@@ -67,8 +67,7 @@ platform :ios do
 
    # fetches and installs provisioning profiles from ASC
    sigh(
-     api_key: api_key,
-     readonly: true
+     api_key: api_key
    )
  end
 
@@ -81,13 +80,9 @@ platform :ios do
         use_automatic_signing: false,
         code_sign_identity: "Apple Distribution",
         bundle_identifier: app_identifier,
-        profile_name: "Default",
+        profile_name: "Biba Provisioning Profile",
         build_configurations: ["Release"]
     )
-    profileName = lane_context[SharedValues::SIGH_NAME]
-    profileUUID = lane_context[SharedValues::SIGH_UUID]
-    profileType = lane_context[SharedValues::SIGH_PROFILE_TYPE]
-    p [profileName,profileUUID,profileType]
 
     # build the app
     gym(
@@ -95,9 +90,8 @@ platform :ios do
         output_name: output_name,
         configuration: "Release",
         export_options: {
-          method: options[:export_method],
-          testFlightInternalTestingOnly: true,
-          provisioningProfiles: { "com.biba": "Default" }
+            method: "ad-hoc",
+            testFlightInternalTestingOnly: true
         }
     )
 end

@@ -29,6 +29,8 @@
 		E859A8EC2B3135DC007E258C /* config.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = config.sh; sourceTree = "<group>"; };
 		E859A9052B3176EF007E258C /* GoogleService-Info-Prod.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "GoogleService-Info-Prod.plist"; path = "/Users/andywu/Desktop/Biba/Biba/App/Firebase/GoogleService-Info-Prod.plist"; sourceTree = "<absolute>"; };
 		E859A9062B317716007E258C /* GoogleService-Info-Stage.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Stage.plist"; sourceTree = "<group>"; };
+		E87941AE2B3749160042F58B /* Appfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Appfile; sourceTree = "<group>"; };
+		E87941AF2B3749160042F58B /* Fastfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; path = Fastfile; sourceTree = "<group>"; };
 		E8D856BB2B2EFAA9005D2E9F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E8D856BD2B2EFAA9005D2E9F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E8D856C42B2EFAAA005D2E9F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -134,9 +136,27 @@
 			path = App;
 			sourceTree = "<group>";
 		};
+		E87941AC2B373E860042F58B /* CI */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CI;
+			sourceTree = "<group>";
+		};
+		E87941AD2B3749160042F58B /* fastlane */ = {
+			isa = PBXGroup;
+			children = (
+				E87941AE2B3749160042F58B /* Appfile */,
+				E87941AF2B3749160042F58B /* Fastfile */,
+			);
+			path = fastlane;
+			sourceTree = "<group>";
+		};
 		E8D856AF2B2EFAA9005D2E9F = {
 			isa = PBXGroup;
 			children = (
+				E87941AD2B3749160042F58B /* fastlane */,
+				E87941AC2B373E860042F58B /* CI */,
 				E8D856BA2B2EFAA9005D2E9F /* Biba */,
 				B21D5CFDC64F67651BC0DE02 /* Pods */,
 				064A5AA82CCEB3DF1950E544 /* Frameworks */,

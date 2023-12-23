@@ -95,7 +95,7 @@ platform :ios do
         configuration: "Release",
         export_options: {
             method: export_method,
-            testFlightInternalTestingOnly: true
+            testFlightInternalTestingOnly: true,
             provisioningProfiles: {
                app_identifier => "DistributeAllApps"
             }

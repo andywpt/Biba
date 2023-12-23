@@ -79,7 +79,7 @@ platform :ios do
  desc "Build the iOS app for release"
  lane :build_release do |options|
     app_identifier = CredentialsManager::AppfileConfig.try_fetch_value(:app_identifier)
-    output_name = "example-iOS" # specify the name of the .ipa file to generate
+    output_name = "biba.ipa" # specify the name of the .ipa file to generate
     export_method = "app-store" # specify the export method
 
     update_project_provisioning(
@@ -95,9 +95,11 @@ platform :ios do
 
     # build the app
     gym(
+        workspace: "Biba.xcworkspace"
         scheme: "Biba",
         output_name: output_name,
         configuration: "Release",
+        export_method: "app-store",
         export_options: {
             method: export_method,
             testFlightInternalTestingOnly: true,

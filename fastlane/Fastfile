@@ -65,6 +65,7 @@ platform :ios do
      log_output: true
    )
 
+   install_provisioning_profile(path: ENV["APP_PROVISION_PROFILE"])
    # fetches and installs provisioning profiles from ASC
    sigh(
      api_key: api_key

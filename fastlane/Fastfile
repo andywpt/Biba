@@ -84,6 +84,10 @@ platform :ios do
         profile_name: "Default",
         build_configurations: ["Release"]
     )
+    profileName = lane_context[SharedValues::SIGH_NAME]
+    profileUUID = lane_context[SharedValues::SIGH_UUID]
+    profileType = lane_context[SharedValues::SIGH_PROFILE_TYPE]
+    p [profileName,profileUUID,profileType]
 
     # build the app
     gym(

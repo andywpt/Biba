@@ -34,8 +34,10 @@ jobs:
       - name: Decode signing certificate into a file
         env:
           CERTIFICATE_BASE64: ${{ secrets.APPLE_CERTIFICATE }}
+          PROVISION_PROFILE_BASE64: ${{ secrets.APP_PROVISION_PROFILE }}
         run: |
           echo $CERTIFICATE_BASE64 | base64 --decode > certificate.p12
+          echo $PROVISION_PROFILE_BASE64 | base64 --decode > profile.mobileprovision
           ls -1
 
       - name: Build & upload iOS binary

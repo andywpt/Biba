@@ -70,6 +70,7 @@ platform :ios do
         configuration: "Release",
         export_method: "app-store",
         export_options: {
+            export_method: "app-store",
             testFlightInternalTestingOnly: true,
             provisioningProfiles: {
                 "com.biba": provision_profile_name

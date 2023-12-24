@@ -1,36 +1,35 @@
 
 platform :ios do
- desc "Load App Store Connect API token"
- lane :load_asc_api_key do
+ desc "Load the App Store Connect API token to use in other fastlane tools and actions"
+ lane :load_app_store_connect_api_key do
    app_store_connect_api_key(
      key_id: ENV["APPSTORE_API_KEY_ID"],
      issuer_id: ENV["APPSTORE_API_ISSUER_ID"],
      key_content: ENV["APPSTORE_API_PRIVATE_KEY"],
-     is_key_content_base64: true,
-     in_house: false
+     is_key_content_base64: true
    )
  end
  
  desc "Increment TestFlight build number"
- lane :fetch_and_increment_build_number do
-    app_identifier = CredentialsManager::AppfileConfig.try_fetch_value(:app_identifier)
+ lane :increment_build_number do
+   app_identifier = CredentialsManager::AppfileConfig.try_fetch_value(:app_identifier)
 
-    current_version = get_version_number()
-    latest_build_number = latest_testflight_build_number(
-        version: current_version,
-        app_identifier: app_identifier
-    )
-    increment_build_number(
-        build_number: (latest_build_number + 1),
-    )
+   current_version = get_version_number()
+   latest_build_number = latest_testflight_build_number(
+     version: current_version,
+     app_identifier: app_identifier
+   )
+   increment_build_number(
+     build_number: (latest_build_number + 1),
+   )
  end
 
- desc "Installs signing certificate in the keychain and downloads provisioning profiles from App Store Connect"
- lane :prepare_signing do |options|
+ desc "Install distribution certificate in the keychain"
+ lane :install_distribution_certificate do |options|
      
    keychain_name = "signing"
    keychain_password = "temp"
-
+   
    delete_keychain(
      name: keychain_name
    ) if File.exist? File.expand_path("~/Library/Keychains/#{keychain_name}-db")
@@ -51,22 +50,24 @@ platform :ios do
      keychain_password: keychain_password,
      log_output: true
    )
-  
-   # download the corresponding provisioning profile, renew it if expired
-   sigh(app_identifier: "*", readonly: true)
-   profile_name = lane_context[SharedValues::SIGH_NAME]
+ end
+ 
+ desc "download provisioning profile"
+ lane :install_provision_profile do |options|
+     # download the corresponding provisioning profile, renew it if expired
+     sigh(app_identifier: "*", readonly: true)
+     profile_name = lane_context[SharedValues::SIGH_NAME]
  end
 
  desc "Build the iOS app for release"
  lane :build_release do |options|
     app_identifier = CredentialsManager::AppfileConfig.try_fetch_value(:app_identifier)
     provision_profile_name = lane_context[SharedValues::SIGH_NAME]
-    output_name = "biba.ipa" # specify the name of the .ipa file to generate
     update_code_signing_settings(code_sign_identity: "Apple Distribution")
     # build the app
     gym(
         scheme: "Biba",
-        output_name: output_name,
+        output_name: "biba.ipa",
         configuration: "Release",
         export_method: "app-store",
         export_options: {
@@ -79,7 +80,7 @@ platform :ios do
 end
 
  desc "Upload to TestFlight"
- lane :upload_release do
+ lane :upload_to_test_flight do
     deliver(
         skip_screenshots: true,
         skip_metadata: true,
@@ -91,10 +92,11 @@ end
     
  desc "Build and upload to TestFlight"
  lane :build_upload_testflight do
-    load_asc_api_key
-    fetch_and_increment_build_number
-    prepare_signing
+    load_app_store_connect_api_key
+    increment_build_number
+    install_distribution_certificate
+    install_provisioning_profile
     build_release
-    upload_release
+    upload_to_test_flight
  end
 end

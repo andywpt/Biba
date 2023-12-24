@@ -31,7 +31,6 @@ jobs:
           }
           echo $ALL_VARIABLES | parse >> .env
           echo $ALL_SECRETS | parse >> .env
-          cat .env
       - name: Setup project
         run: |
           gem install xcodeproj

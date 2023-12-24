@@ -36,8 +36,8 @@ jobs:
           to_envs() {
             jq -r 'to_entries[] | "\(.key)=\(.value)"'
           }
-          cat secrets.json | to_envs >> .env
-          cat vars.json | to_envs >> .env
+          cat $ALL_VARIABLES | to_envs >> .env
+          cat $ALL_SECRETS | to_envs >> .env
           cat .env
       - name: Setup project
         run: |

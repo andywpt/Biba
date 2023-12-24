@@ -80,7 +80,7 @@ platform :ios do
 end
 
  desc "Upload to TestFlight"
- lane :upload_to_test_flight do
+ lane :upload_to_testflight do
     deliver(
         skip_screenshots: true,
         skip_metadata: true,
@@ -93,10 +93,10 @@ end
  desc "Build and upload to TestFlight"
  lane :build_upload_testflight do
     load_app_store_connect_api_key
-    # update_app_build_number
+    update_app_build_number
     install_distribution_certificate
     configure_code_signing_settings
     archive_app
-    upload_to_test_flight
+    upload_to_testflight
  end
 end

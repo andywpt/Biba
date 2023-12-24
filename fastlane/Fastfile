@@ -11,7 +11,7 @@ platform :ios do
  end
  
  desc "Increment TestFlight build number"
- lane :update__app_build_number do
+ lane :update_app_build_number do
    app_identifier = CredentialsManager::AppfileConfig.try_fetch_value(:app_identifier)
 
    current_version = get_version_number()

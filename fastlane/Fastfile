@@ -25,10 +25,10 @@ platform :ios do
  end
 
  desc "Install distribution certificate in the keychain"
- lane :install_distribution_certificate do |options|
+ lane :install_distribution_certificate do
      
    keychain_name = "signing"
-   keychain_password = "temp"
+   keychain_password = "password"
    
    delete_keychain(
      name: keychain_name
@@ -54,13 +54,12 @@ platform :ios do
  
  desc "download provisioning profile"
  lane :install_provision_profile do |options|
-     # download the corresponding provisioning profile, renew it if expired
      sigh(app_identifier: "*", readonly: true)
      profile_name = lane_context[SharedValues::SIGH_NAME]
  end
 
  desc "Build the iOS app for release"
- lane :build_release do |options|
+ lane :build_release do
     app_identifier = CredentialsManager::AppfileConfig.try_fetch_value(:app_identifier)
     provision_profile_name = lane_context[SharedValues::SIGH_NAME]
     update_code_signing_settings(code_sign_identity: "Apple Distribution")

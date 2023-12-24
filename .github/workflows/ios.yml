@@ -28,10 +28,17 @@ jobs:
           # echo APP_ID=${{ secrets.TAPPAY_APP_ID }} >> .env
           # echo APP_KEY=${{ secrets.TAPPAY_APP_KEY }} >> .env
           # cat .env
-          to_envs() { jq -r '.[] | "\(.key)=\(.value)"'}
-
-          echo "$VARS_CONTEXT" | to_envs >> .env
-          echo "$SECRETS_CONTEXT" | to_envs >> .env
+          if [ -f .env ]; then
+            echo "An .env already exists, there shouldn't be any .env files in the repo."
+            exit 1
+          else
+            touch .env
+          fi
+          to_envs() {
+            jq -r 'to_entries[] | "\(.key)=\(.value)"'
+          }
+          cat secrets.json | to_envs >> .env
+          cat vars.json | to_envs >> .env
           cat .env
       - name: Setup project
         run: |

@@ -69,7 +69,8 @@ platform :ios do
         path: "Biba.xcodeproj",
         use_automatic_signing: false,
         code_sign_identity: "iPhone Distribution",
-        team_id: "ZKX4347K9W"
+        team_id: "ZKX4347K9W",
+        profile_name: provision_profile_name
     )
 
     # build the app

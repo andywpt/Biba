@@ -72,7 +72,7 @@ platform :ios do
         export_options: {
             testFlightInternalTestingOnly: true,
             provisioningProfiles: {
-                app_identifier: provision_profile_name
+                "com.biba": provision_profile_name
             }
         }
     )

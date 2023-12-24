@@ -66,9 +66,10 @@ platform :ios do
     export_method = "app-store" # specify the export method
 
     update_code_signing_settings(
+        path: "Biba.xcodeproj",
         use_automatic_signing: false,
         code_sign_identity: "iPhone Distribution",
-        bundle_identifier: app_identifier
+        team_id: "ZKX4347K9W"
     )
 
     # build the app

@@ -34,9 +34,9 @@ class MainViewController: UIViewController {
       label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
       label.centerYAnchor.constraint(equalTo: view.centerYAnchor),
     ])
-    label.text = "環境:\(Config.environment)"
+    label.text = "\(Config.environment)"
     if Config.environment == "Production" {
-      view.backgroundColor = .white
+      view.backgroundColor = .systemYellow
       label.textColor = .black
     } else  {
       view.backgroundColor = .black

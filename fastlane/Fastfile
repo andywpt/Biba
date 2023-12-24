@@ -11,7 +11,7 @@ platform :ios do
  end
  
  desc "Increment TestFlight build number"
- lane :update_build_number do
+ lane :update__app_build_number do
    app_identifier = CredentialsManager::AppfileConfig.try_fetch_value(:app_identifier)
 
    current_version = get_version_number()
@@ -28,7 +28,7 @@ platform :ios do
  lane :install_distribution_certificate do
      
    keychain_name = "signing"
-   keychain_password = "temp"
+   keychain_password = ""
    
    delete_keychain(
      name: keychain_name
@@ -65,9 +65,8 @@ platform :ios do
      )
  end
 
- desc "Build the iOS app for release"
- lane :build_release do
-    # build the app
+ desc "Archive app for release"
+ lane :archive_app do
     gym(
         workspace: "Biba.xcworkspace",
         scheme: "Biba",
@@ -94,10 +93,10 @@ end
  desc "Build and upload to TestFlight"
  lane :build_upload_testflight do
     load_app_store_connect_api_key
-    update_build_number
+    # update_app_build_number
     install_distribution_certificate
     configure_code_signing_settings
-    build_release
+    archive_app
     upload_to_test_flight
  end
 end

@@ -52,30 +52,26 @@ platform :ios do
    )
  end
  
- desc "download provisioning profile"
- lane :install_provision_profile do |options|
+ desc "Configure code signing settings in Xcode before build"
+ lane :configure_code_signing_settings do |options|
+     # install_provision_profile
      sigh(app_identifier: "*", readonly: true)
-     p "Installed Provisioning Profile: #{lane_context[SharedValues::SIGH_NAME]}"
+     provision_profile_name = lane_context[SharedValues::SIGH_NAME]
+     # select the installed provision profile
+     update_code_signing_settings(
+         code_sign_identity: "iPhone Distribution",
+         team_id: "ZKX4347K9W",
+         profile_name: provision_profile_name
+     )
  end
 
  desc "Build the iOS app for release"
  lane :build_release do
-    app_identifier = CredentialsManager::AppfileConfig.try_fetch_value(:app_identifier)
-    provision_profile_name = lane_context[SharedValues::SIGH_NAME]
-    output_name = "biba.ipa" # specify the name of the .ipa file to generate
-    export_method = "app-store" # specify the export method
-
-    update_code_signing_settings(
-        code_sign_identity: "iPhone Distribution",
-        team_id: "ZKX4347K9W",
-        profile_name: provision_profile_name
-    )
-
     # build the app
     gym(
         workspace: "Biba.xcworkspace",
         scheme: "Biba",
-        output_name: output_name,
+        output_name: "biba.ipa",
         configuration: "Release",
         export_method: "app-store",
         export_options: {
@@ -100,7 +96,7 @@ end
     load_app_store_connect_api_key
     update_build_number
     install_distribution_certificate
-    install_provision_profile
+    configure_code_signing_settings
     build_release
     upload_to_test_flight
  end

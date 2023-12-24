@@ -70,7 +70,7 @@ platform :ios do
         configuration: "Release",
         export_method: "app-store",
         export_options: {
-            testFlightInternalTestingOnly: true
+            testFlightInternalTestingOnly: true,
             provisioningProfiles: {
                 app_identifier: provision_profile_name
             }

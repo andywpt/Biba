@@ -2,7 +2,7 @@
 require 'xcodeproj'
 
 # Create an empty file
-file_path = 'Biba/App/Config/Config.swift'
+file_path = 'Biba/App/Config.swift'
 File.open(file_path, 'w') {}
 
 #define the path to your .xcodeproj file

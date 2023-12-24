@@ -55,7 +55,7 @@ platform :ios do
  desc "download provisioning profile"
  lane :install_provision_profile do |options|
      sigh(app_identifier: "*", readonly: true)
-     p "Installed provisioning profile: #{lane_context[SharedValues::SIGH_NAME]}"
+     p "Installed Provisioning Profile: #{lane_context[SharedValues::SIGH_NAME]}"
  end
 
  desc "Build the iOS app for release"

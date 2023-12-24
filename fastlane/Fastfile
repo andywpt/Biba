@@ -67,7 +67,6 @@ platform :ios do
 
     update_code_signing_settings(
         path: "Biba.xcodeproj",
-        use_automatic_signing: false,
         code_sign_identity: "iPhone Distribution",
         team_id: "ZKX4347K9W",
         profile_name: provision_profile_name
@@ -81,11 +80,7 @@ platform :ios do
         configuration: "Release",
         export_method: "app-store",
         export_options: {
-            method: export_method,
-            testFlightInternalTestingOnly: true,
-            provisioningProfiles: {
-               app_identifier => "DistributeAllApps"
-            }
+            testFlightInternalTestingOnly: true
         }
     )
 end

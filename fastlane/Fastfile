@@ -28,7 +28,7 @@ platform :ios do
  lane :install_distribution_certificate do
      
    keychain_name = "signing"
-   keychain_password = ""
+   keychain_password = "temp"
    
    delete_keychain(
      name: keychain_name

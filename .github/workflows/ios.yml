@@ -28,8 +28,8 @@ jobs:
           # echo APP_ID=${{ secrets.TAPPAY_APP_ID }} >> .env
           # echo APP_KEY=${{ secrets.TAPPAY_APP_KEY }} >> .env
           # cat .env
-          jq -r '.[] | "\(.key)=\(.value)"'
-          
+          to_envs() { jq -r '.[] | "\(.key)=\(.value)"'}
+
           echo "$VARS_CONTEXT" | to_envs >> .env
           echo "$SECRETS_CONTEXT" | to_envs >> .env
           cat .env

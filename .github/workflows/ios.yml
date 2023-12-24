@@ -24,7 +24,6 @@ jobs:
           ALL_VARIABLES: ${{ toJson(vars) }}
           ALL_SECRETS: ${{ toJson(secrets) }}
         run: |
-          touch .env
           # echo APP_ID=${{ secrets.TAPPAY_APP_ID }} >> .env
           # echo APP_KEY=${{ secrets.TAPPAY_APP_KEY }} >> .env
           # cat .env

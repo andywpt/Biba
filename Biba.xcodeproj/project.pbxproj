@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		C50C881F83F0D6AB13F39FCC /* Pods_Biba.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7157354F810CA6AF2DD4D79F /* Pods_Biba.framework */; };
-		E80366CE2B335DD90067F86B /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80366CD2B335DD90067F86B /* Test.swift */; };
 		E8D856BC2B2EFAA9005D2E9F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D856BB2B2EFAA9005D2E9F /* AppDelegate.swift */; };
 		E8D856BE2B2EFAA9005D2E9F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D856BD2B2EFAA9005D2E9F /* SceneDelegate.swift */; };
 		E8D856C52B2EFAAA005D2E9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8D856C42B2EFAAA005D2E9F /* Assets.xcassets */; };
@@ -23,14 +22,13 @@
 		6DD9FF96C4B9D4E9B62FDB1F /* Config.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		7157354F810CA6AF2DD4D79F /* Pods_Biba.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Biba.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E80366CA2B3352D80067F86B /* pre-commit.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "pre-commit.sh"; sourceTree = "<group>"; };
-		E80366CD2B335DD90067F86B /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		E840D5912B3022EC00AEDFB4 /* Config.stencil */ = {isa = PBXFileReference; lastKnownFileType = text; path = Config.stencil; sourceTree = "<group>"; };
 		E842330A2B30729C0027D863 /* Biba-Stage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Biba-Stage.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E859A8EC2B3135DC007E258C /* config.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = config.sh; sourceTree = "<group>"; };
-		E859A9052B3176EF007E258C /* GoogleService-Info-Prod.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "GoogleService-Info-Prod.plist"; path = "/Users/andywu/Desktop/Biba/Biba/App/Firebase/GoogleService-Info-Prod.plist"; sourceTree = "<absolute>"; };
-		E859A9062B317716007E258C /* GoogleService-Info-Stage.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Stage.plist"; sourceTree = "<group>"; };
 		E87941AE2B3749160042F58B /* Appfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Appfile; sourceTree = "<group>"; };
 		E87941AF2B3749160042F58B /* Fastfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; path = Fastfile; sourceTree = "<group>"; };
+		E87941BB2B3887B80042F58B /* GoogleService-Info-Stage.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Stage.plist"; sourceTree = "<group>"; };
+		E87941BC2B3887B80042F58B /* GoogleService-Info-Prod.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Prod.plist"; sourceTree = "<group>"; };
 		E8D856BB2B2EFAA9005D2E9F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E8D856BD2B2EFAA9005D2E9F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E8D856C42B2EFAAA005D2E9F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -69,69 +67,16 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		E80366C72B3351F50067F86B /* Scripts */ = {
-			isa = PBXGroup;
-			children = (
-				E80366CF2B353CE60067F86B /* CI */,
-				E80366C92B3352900067F86B /* GitHooks */,
-				E80366C82B3352810067F86B /* BuildPhase */,
-			);
-			path = Scripts;
-			sourceTree = "<group>";
-		};
-		E80366C82B3352810067F86B /* BuildPhase */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = BuildPhase;
-			sourceTree = "<group>";
-		};
-		E80366C92B3352900067F86B /* GitHooks */ = {
-			isa = PBXGroup;
-			children = (
-				E80366CA2B3352D80067F86B /* pre-commit.sh */,
-				E80366CD2B335DD90067F86B /* Test.swift */,
-			);
-			path = GitHooks;
-			sourceTree = "<group>";
-		};
-		E80366CF2B353CE60067F86B /* CI */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CI;
-			sourceTree = "<group>";
-		};
-		E859A8F52B316407007E258C /* Config */ = {
-			isa = PBXGroup;
-			children = (
-				E840D5912B3022EC00AEDFB4 /* Config.stencil */,
-				E859A8EC2B3135DC007E258C /* config.sh */,
-				6DD9FF96C4B9D4E9B62FDB1F /* Config.swift */,
-			);
-			path = Config;
-			sourceTree = "<group>";
-		};
-		E859A9072B317722007E258C /* Firebase */ = {
-			isa = PBXGroup;
-			children = (
-				E859A9052B3176EF007E258C /* GoogleService-Info-Prod.plist */,
-				E859A9062B317716007E258C /* GoogleService-Info-Stage.plist */,
-				E8D856E12B2F280E005D2E9F /* firebase.sh */,
-			);
-			path = Firebase;
-			sourceTree = "<group>";
-		};
 		E859A90C2B3294FA007E258C /* App */ = {
 			isa = PBXGroup;
 			children = (
-				E859A8F52B316407007E258C /* Config */,
-				E859A9072B317722007E258C /* Firebase */,
 				E8D856BB2B2EFAA9005D2E9F /* AppDelegate.swift */,
 				E8D856BD2B2EFAA9005D2E9F /* SceneDelegate.swift */,
 				E8D856C42B2EFAAA005D2E9F /* Assets.xcassets */,
 				E8D856C62B2EFAAA005D2E9F /* LaunchScreen.storyboard */,
 				E8D856C92B2EFAAA005D2E9F /* Info.plist */,
+				6DD9FF96C4B9D4E9B62FDB1F /* Config.swift */,
+				E840D5912B3022EC00AEDFB4 /* Config.stencil */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -145,11 +90,64 @@
 			path = fastlane;
 			sourceTree = "<group>";
 		};
+		E87941B02B386F860042F58B /* Scripts */ = {
+			isa = PBXGroup;
+			children = (
+				E87941B42B387E210042F58B /* GitHooks */,
+				E87941B12B386F9E0042F58B /* BuildPhase */,
+				E87941B32B3873990042F58B /* CI */,
+			);
+			path = Scripts;
+			sourceTree = "<group>";
+		};
+		E87941B12B386F9E0042F58B /* BuildPhase */ = {
+			isa = PBXGroup;
+			children = (
+				E859A8EC2B3135DC007E258C /* config.sh */,
+				E8D856E12B2F280E005D2E9F /* firebase.sh */,
+			);
+			path = BuildPhase;
+			sourceTree = "<group>";
+		};
+		E87941B32B3873990042F58B /* CI */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CI;
+			sourceTree = "<group>";
+		};
+		E87941B42B387E210042F58B /* GitHooks */ = {
+			isa = PBXGroup;
+			children = (
+				E80366CA2B3352D80067F86B /* pre-commit.sh */,
+			);
+			path = GitHooks;
+			sourceTree = "<group>";
+		};
+		E87941B52B387F7F0042F58B /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				E8D856CF2B2EFB31005D2E9F /* MainViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		E87941B82B3887710042F58B /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				E87941BC2B3887B80042F58B /* GoogleService-Info-Prod.plist */,
+				E87941BB2B3887B80042F58B /* GoogleService-Info-Stage.plist */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
 		E8D856AF2B2EFAA9005D2E9F = {
 			isa = PBXGroup;
 			children = (
-				E87941AD2B3749160042F58B /* fastlane */,
 				E8D856BA2B2EFAA9005D2E9F /* Biba */,
+				E87941B02B386F860042F58B /* Scripts */,
+				E87941AD2B3749160042F58B /* fastlane */,
+				E87941B82B3887710042F58B /* Firebase */,
 				B21D5CFDC64F67651BC0DE02 /* Pods */,
 				064A5AA82CCEB3DF1950E544 /* Frameworks */,
 				E842330A2B30729C0027D863 /* Biba-Stage.app */,
@@ -159,9 +157,8 @@
 		E8D856BA2B2EFAA9005D2E9F /* Biba */ = {
 			isa = PBXGroup;
 			children = (
-				E80366C72B3351F50067F86B /* Scripts */,
 				E859A90C2B3294FA007E258C /* App */,
-				E8D856CF2B2EFB31005D2E9F /* MainViewController.swift */,
+				E87941B52B387F7F0042F58B /* ViewControllers */,
 			);
 			path = Biba;
 			sourceTree = "<group>";
@@ -291,7 +288,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n${PROJECT_DIR}/${TARGET_NAME}/App/Config/config.sh\n";
+			shellScript = "${PROJECT_DIR}/Scripts/BuildPhase/config.sh\n";
 		};
 		E8D856E02B2F10E7005D2E9F /* Firebase Script */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -310,7 +307,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n${PROJECT_DIR}/${TARGET_NAME}/App/Firebase/firebase.sh\n";
+			shellScript = "${PROJECT_DIR}/Scripts/BuildPhase/firebase.sh\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -320,7 +317,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8D856BC2B2EFAA9005D2E9F /* AppDelegate.swift in Sources */,
-				E80366CE2B335DD90067F86B /* Test.swift in Sources */,
 				E8D856BE2B2EFAA9005D2E9F /* SceneDelegate.swift in Sources */,
 				E8D856D02B2EFB31005D2E9F /* MainViewController.swift in Sources */,
 				FAE2EC367318234AFCA71DA5 /* Config.swift in Sources */,

@@ -8,7 +8,7 @@
 
 # This script should run before the complie step in build phase
 
-CONFIG_PATH=${PROJECT_DIR}/${TARGET_NAME}/App/Config
+CONFIG_PATH=${PROJECT_DIR}/${TARGET_NAME}/App
 TEMPLATE_PATH=${CONFIG_PATH}/Config.stencil
 OUTPUT_PATH=$CONFIG_PATH/Config.swift
 

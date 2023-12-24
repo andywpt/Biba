@@ -8,7 +8,7 @@
 
 # Make sure to chmod u+x Build-Phases/my-script.sh
 
-SOURCE_PATH=${PROJECT_DIR}/${TARGET_NAME}/App/Firebase
+SOURCE_PATH=${PROJECT_DIR}
 TARGET_PATH=${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist
 
 file=""

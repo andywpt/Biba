@@ -64,6 +64,7 @@ platform :ios do
     
     # build the app
     gym(
+        scheme: Biba,
         output_name: output_name,
         configuration: "Release",
         export_method: "app-store",

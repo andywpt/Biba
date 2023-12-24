@@ -24,18 +24,13 @@ jobs:
           ALL_VARIABLES: ${{ toJson(vars) }}
           ALL_SECRETS: ${{ toJson(secrets) }}
         run: |
-          if [ -f .env ]; then
-            echo "An .env already exists, there shouldn't be any .env files in the repo."
-            exit 1
-          else
-            touch .env
-          fi
-          to_envs() {
+          touch .env
+          parse() {
             jq -r 'to_entries | sort_by(.key) | .[] | "\(.key)=\(.value)"'
             # jq -r 'to_entries[] | "\(.key)=\(.value)"'
           }
-          echo $ALL_VARIABLES | to_envs >> .env
-          echo $ALL_SECRETS | to_envs >> .env
+          echo $ALL_VARIABLES | parse >> .env
+          echo $ALL_SECRETS | parse >> .env
           cat .env
       - name: Setup project
         run: |

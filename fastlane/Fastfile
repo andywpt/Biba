@@ -95,7 +95,7 @@ end
     update_build_number
     install_distribution_certificate
     install_provision_profile
-    #build_release
-    #upload_to_test_flight
+    build_release
+    upload_to_test_flight
  end
 end

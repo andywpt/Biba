@@ -28,7 +28,7 @@ platform :ios do
  lane :install_distribution_certificate do
      
    keychain_name = "signing"
-   keychain_password = "password"
+   keychain_password = ""
    
    delete_keychain(
      name: keychain_name
@@ -55,7 +55,7 @@ platform :ios do
  desc "download provisioning profile"
  lane :install_provision_profile do |options|
      sigh(app_identifier: "*", readonly: true)
-     profile_name = lane_context[SharedValues::SIGH_NAME]
+     p "Provisioning profile: #{lane_context[SharedValues::SIGH_NAME]}"
  end
 
  desc "Build the iOS app for release"
@@ -95,7 +95,7 @@ end
     update_build_number
     install_distribution_certificate
     install_provision_profile
-    build_release
-    upload_to_test_flight
+    #build_release
+    #upload_to_test_flight
  end
 end

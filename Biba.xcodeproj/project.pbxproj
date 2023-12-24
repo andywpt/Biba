@@ -136,13 +136,6 @@
 			path = App;
 			sourceTree = "<group>";
 		};
-		E87941AC2B373E860042F58B /* CI */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CI;
-			sourceTree = "<group>";
-		};
 		E87941AD2B3749160042F58B /* fastlane */ = {
 			isa = PBXGroup;
 			children = (
@@ -156,7 +149,6 @@
 			isa = PBXGroup;
 			children = (
 				E87941AD2B3749160042F58B /* fastlane */,
-				E87941AC2B373E860042F58B /* CI */,
 				E8D856BA2B2EFAA9005D2E9F /* Biba */,
 				B21D5CFDC64F67651BC0DE02 /* Pods */,
 				064A5AA82CCEB3DF1950E544 /* Frameworks */,

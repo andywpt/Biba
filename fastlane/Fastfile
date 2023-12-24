@@ -62,18 +62,32 @@ platform :ios do
  lane :build_release do
     app_identifier = CredentialsManager::AppfileConfig.try_fetch_value(:app_identifier)
     provision_profile_name = lane_context[SharedValues::SIGH_NAME]
-    update_code_signing_settings(code_sign_identity: "Apple Distribution")
+    output_name = "biba.ipa" # specify the name of the .ipa file to generate
+    export_method = "app-store" # specify the export method
+
+    update_project_provisioning(
+        xcodeproj: "Biba.xcodeproj",
+        build_configuration: "Release"
+    )
+    update_code_signing_settings(
+        use_automatic_signing: false,
+        code_sign_identity: "Apple Distribution",
+        bundle_identifier: app_identifier,
+        build_configurations: ["Release"]
+    )
+
     # build the app
     gym(
+        workspace: "Biba.xcworkspace",
         scheme: "Biba",
-        output_name: "biba.ipa",
+        output_name: output_name,
         configuration: "Release",
         export_method: "app-store",
         export_options: {
-            export_method: "app-store",
+            method: export_method,
             testFlightInternalTestingOnly: true,
             provisioningProfiles: {
-                "com.biba": provision_profile_name
+               app_identifier => "DistributeAllApps"
             }
         }
     )

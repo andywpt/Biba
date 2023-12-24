@@ -36,7 +36,7 @@ platform :ios do
 
    create_keychain(
      name: keychain_name,
-     #password: keychain_password,
+     password: keychain_password,
      default_keychain: true,
      unlock: true,
      timeout: 0,
@@ -47,7 +47,7 @@ platform :ios do
      certificate_path: ENV["APPLE_CERTIFICATE"],
      certificate_password: ENV["APPLE_CERTIFICATE_PASSWORD"],
      keychain_name: keychain_name,
-     #keychain_password: keychain_password,
+     keychain_password: keychain_password,
      log_output: true
    )
  end
@@ -55,7 +55,7 @@ platform :ios do
  desc "download provisioning profile"
  lane :install_provision_profile do |options|
      sigh(app_identifier: "*", readonly: true)
-     p "Provisioning profile: #{lane_context[SharedValues::SIGH_NAME]}"
+     p "Installed provisioning profile: #{lane_context[SharedValues::SIGH_NAME]}"
  end
 
  desc "Build the iOS app for release"

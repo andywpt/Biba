@@ -13,7 +13,7 @@ target 'Biba' do
   pod 'FirebaseFirestore'
   pod 'FirebaseFirestoreSwift'
   pod 'FirebaseFunctions'
-  pod 'FirebaseInAppMessaging'
+  pod 'FirebaseInAppMessaging', "> 10.7-beta"
   pod 'FirebaseMessaging'
   pod 'GoogleMLKit/BarcodeScanning'
   pod 'GoogleSignIn'

@@ -39,10 +39,8 @@ final class HeartbeatStorage: HeartbeatStorageProtocol {
   /// - Parameters:
   ///   - id: A string identifer.
   ///   - storage: The underlying storage container where heartbeat data is stored.
-  init(
-    id: String,
-    storage: Storage
-  ) {
+  init(id: String,
+       storage: Storage) {
     self.id = id
     self.storage = storage
     queue = DispatchQueue(label: "com.heartbeat.storage.\(id)")
@@ -82,7 +80,7 @@ final class HeartbeatStorage: HeartbeatStorageProtocol {
       let storage = UserDefaultsStorage.makeStorage(id: id)
     #else
       let storage = FileStorage.makeStorage(id: id)
-    #endif  // os(tvOS)
+    #endif // os(tvOS)
     return HeartbeatStorage(id: id, storage: storage)
   }
 
@@ -126,8 +124,7 @@ final class HeartbeatStorage: HeartbeatStorageProtocol {
   /// - Returns: The heartbeat data that was stored (before the `transform` was applied).
   @discardableResult
   func getAndSet(using transform: (HeartbeatsBundle?) -> HeartbeatsBundle?) throws
-    -> HeartbeatsBundle?
-  {
+    -> HeartbeatsBundle? {
     let heartbeatsBundle: HeartbeatsBundle? = try queue.sync {
       let oldHeartbeatsBundle = try? load(from: storage)
       let newHeartbeatsBundle = transform(oldHeartbeatsBundle)
@@ -165,19 +162,19 @@ final class HeartbeatStorage: HeartbeatStorageProtocol {
   }
 }
 
-extension Data {
+private extension Data {
   /// Returns the decoded value of this `Data` using the given decoder. Defaults to `JSONDecoder`.
   /// - Returns: The decoded value.
-  fileprivate func decoded<T>(using decoder: JSONDecoder = .init()) throws -> T where T: Decodable {
+  func decoded<T>(using decoder: JSONDecoder = .init()) throws -> T where T: Decodable {
     try decoder.decode(T.self, from: self)
   }
 }
 
-extension Encodable {
+private extension Encodable {
   /// Returns the `Data` encoding of this value using the given encoder.
   /// - Parameter encoder: An encoder used to encode the value. Defaults to `JSONEncoder`.
   /// - Returns: The data encoding of the value.
-  fileprivate func encoded(using encoder: JSONEncoder = .init()) throws -> Data {
+  func encoded(using encoder: JSONEncoder = .init()) throws -> Data {
     try encoder.encode(self)
   }
 }

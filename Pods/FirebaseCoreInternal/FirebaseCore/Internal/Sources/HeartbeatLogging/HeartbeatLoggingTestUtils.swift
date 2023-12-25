@@ -35,12 +35,12 @@
 
     public static var emptyHeartbeatsPayload: _ObjC_HeartbeatsPayload {
       let literalData = """
-           {
-             "version": 2,
-             "heartbeats": []
-           }
-        """
-        .data(using: .utf8)!
+         {
+           "version": 2,
+           "heartbeats": []
+         }
+      """
+      .data(using: .utf8)!
 
       let decoder = JSONDecoder()
       decoder.dateDecodingStrategy = .formatted(HeartbeatsPayload.dateFormatter)
@@ -51,21 +51,21 @@
 
     public static var nonEmptyHeartbeatsPayload: _ObjC_HeartbeatsPayload {
       let literalData = """
-           {
-             "version": 2,
-             "heartbeats": [
-               {
-                 "agent": "dummy_agent_1",
-                 "dates": ["2021-11-01", "2021-11-02"]
-               },
-               {
-                 "agent": "dummy_agent_2",
-                 "dates": ["2021-11-03"]
-               }
-             ]
-           }
-        """
-        .data(using: .utf8)!
+         {
+           "version": 2,
+           "heartbeats": [
+             {
+               "agent": "dummy_agent_1",
+               "dates": ["2021-11-01", "2021-11-02"]
+             },
+             {
+               "agent": "dummy_agent_2",
+               "dates": ["2021-11-03"]
+             }
+           ]
+         }
+      """
+      .data(using: .utf8)!
 
       let decoder = JSONDecoder()
       decoder.dateDecodingStrategy = .formatted(HeartbeatsPayload.dateFormatter)
@@ -122,8 +122,7 @@
         let applicationSupportDirectory = FileManager.default
           .urls(for: .applicationSupportDirectory, in: .userDomainMask).first!
 
-        let heartbeatsDirectoryURL =
-          applicationSupportDirectory
+        let heartbeatsDirectoryURL = applicationSupportDirectory
           .appendingPathComponent(
             Constants.heartbeatFileStorageDirectoryPath, isDirectory: true
           )
@@ -134,8 +133,8 @@
         } catch {
           throw error
         }
-      #endif  // os(tvOS)
+      #endif // os(tvOS)
     }
   }
 
-#endif  // ENABLE_FIREBASE_CORE_INTERNAL_TESTING_UTILS
+#endif // ENABLE_FIREBASE_CORE_INTERNAL_TESTING_UTILS

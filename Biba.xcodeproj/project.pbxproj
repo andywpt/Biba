@@ -71,11 +71,12 @@
 		E859A90C2B3294FA007E258C /* App */ = {
 			isa = PBXGroup;
 			children = (
-				E8D856BB2B2EFAA9005D2E9F /* AppDelegate.swift */,
-				E8D856BD2B2EFAA9005D2E9F /* SceneDelegate.swift */,
+				E87941BD2B38955F0042F58B /* Biba.entitlements */,
 				E8D856C42B2EFAAA005D2E9F /* Assets.xcassets */,
 				E8D856C62B2EFAAA005D2E9F /* LaunchScreen.storyboard */,
 				E8D856C92B2EFAAA005D2E9F /* Info.plist */,
+				E8D856BB2B2EFAA9005D2E9F /* AppDelegate.swift */,
+				E8D856BD2B2EFAA9005D2E9F /* SceneDelegate.swift */,
 				6DD9FF96C4B9D4E9B62FDB1F /* Config.swift */,
 				E840D5912B3022EC00AEDFB4 /* Config.stencil */,
 			);
@@ -158,7 +159,6 @@
 		E8D856BA2B2EFAA9005D2E9F /* Biba */ = {
 			isa = PBXGroup;
 			children = (
-				E87941BD2B38955F0042F58B /* Biba.entitlements */,
 				E859A90C2B3294FA007E258C /* App */,
 				E87941B52B387F7F0042F58B /* ViewControllers */,
 			);
@@ -178,7 +178,7 @@
 				E8D856B42B2EFAA9005D2E9F /* Sources */,
 				E8D856B52B2EFAA9005D2E9F /* Frameworks */,
 				E8D856B62B2EFAA9005D2E9F /* Resources */,
-				A603FDB91FF67DE0FE3D7AA0 /* [CP] Embed Pods Frameworks */,
+				01DE187FC63440F436DE0559 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -235,6 +235,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		01DE187FC63440F436DE0559 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Biba/Pods-Biba-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Biba/Pods-Biba-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Biba/Pods-Biba-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		0AD02421819ADCF4345A66AE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -255,23 +272,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-		};
-		A603FDB91FF67DE0FE3D7AA0 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Biba/Pods-Biba-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Biba/Pods-Biba-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Biba/Pods-Biba-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
 		};
 		E859A8ED2B3135F6007E258C /* Config Script */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -459,7 +459,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Stage";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Biba/Biba.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Biba/App/Biba.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
@@ -494,7 +494,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Biba/Biba.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Biba/App/Biba.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;

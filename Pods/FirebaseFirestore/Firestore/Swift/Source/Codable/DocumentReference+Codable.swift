@@ -14,25 +14,28 @@
  * limitations under the License.
  */
 
-// SWIFT_PACKAGE
 #if SWIFT_PACKAGE
   @_exported import FirebaseFirestoreInternalWrapper
 #else
   @_exported import FirebaseFirestoreInternal
-#endif
+#endif // SWIFT_PACKAGE
 
 /** Mark DocumentReference to conform to Codable. */
 
-/// A protocol describing the encodable properties of a DocumentReference.
-///
-/// Note: this protocol exists as a workaround for the Swift compiler: if the DocumentReference class
-/// was extended directly to conform to Codable, the methods implementing the protocol would be need
-/// to be marked required but that can't be done in an extension. Declaring the extension on the
-/// protocol sidesteps this issue.
+/**
+ * A protocol describing the encodable properties of a DocumentReference.
+ *
+ * Note: this protocol exists as a workaround for the Swift compiler: if the DocumentReference class
+ * was extended directly to conform to Codable, the methods implementing the protocol would be need
+ * to be marked required but that can't be done in an extension. Declaring the extension on the
+ * protocol sidesteps this issue.
+ */
 private protocol CodableDocumentReference: Codable {}
 
-/// DocumentReference's codable implmentation will just throw for most
-/// encoder/decoder however. It is only meant to be encoded by Firestore.Encoder/Firestore.Decoder.
+/**
+ * DocumentReference's codable implmentation will just throw for most
+ * encoder/decoder however. It is only meant to be encoded by Firestore.Encoder/Firestore.Decoder.
+ */
 extension CodableDocumentReference {
   public init(from decoder: Decoder) throws {
     throw FirestoreDecodingError.decodingIsNotSupported(

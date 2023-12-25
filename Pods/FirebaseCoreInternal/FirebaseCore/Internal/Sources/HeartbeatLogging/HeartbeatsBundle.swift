@@ -47,10 +47,8 @@ struct HeartbeatsBundle: Codable, HeartbeatsPayloadConvertible {
   /// - Parameters:
   ///   - capacity: The heartbeat capacity of the inititialized collection.
   ///   - cache: A cache of time periods mapping to dates. Defaults to using static `cacheProvider`.
-  init(
-    capacity: Int,
-    cache: [TimePeriod: Date] = cacheProvider()
-  ) {
+  init(capacity: Int,
+       cache: [TimePeriod: Date] = cacheProvider()) {
     buffer = RingBuffer(capacity: capacity)
     self.capacity = capacity
     lastAddedHeartbeatDates = cache
@@ -60,7 +58,7 @@ struct HeartbeatsBundle: Codable, HeartbeatsPayloadConvertible {
   /// - Parameter heartbeat: The heartbeat to append.
   mutating func append(_ heartbeat: Heartbeat) {
     guard capacity > 0 else {
-      return  // Do not append if capacity is non-positive.
+      return // Do not append if capacity is non-positive.
     }
 
     do {
@@ -146,7 +144,7 @@ struct HeartbeatsBundle: Codable, HeartbeatsPayloadConvertible {
 
     let userAgentPayloads = [String: [Date]](agentAndDates, uniquingKeysWith: +)
       .map(HeartbeatsPayload.UserAgentPayload.init)
-      .sorted { $0.agent < $1.agent }  // Sort payloads by user agent.
+      .sorted { $0.agent < $1.agent } // Sort payloads by user agent.
 
     return HeartbeatsPayload(userAgentPayloads: userAgentPayloads)
   }

@@ -14,24 +14,22 @@
  * limitations under the License.
  */
 
-import Foundation
-
-// SWIFT_PACKAGE
 #if SWIFT_PACKAGE
   @_exported import FirebaseFirestoreInternalWrapper
 #else
   @_exported import FirebaseFirestoreInternal
-#endif
+#endif // SWIFT_PACKAGE
+import Foundation
 
 #if compiler(>=5.5.2) && canImport(_Concurrency)
   @available(iOS 13, tvOS 13, macOS 10.15, macCatalyst 13, watchOS 7, *)
-  extension Firestore {
+  public extension Firestore {
     /// Loads a Firestore bundle into the local cache.
     /// - Parameter bundleData: Data from the bundle to be loaded.
     /// - Throws: `Error` if the bundle data cannot be parsed.
     /// - Returns: The final `LoadBundleTaskProgress` that contains the total number of documents
     /// loaded.
-    public func loadBundle(_ bundleData: Data) async throws -> LoadBundleTaskProgress {
+    func loadBundle(_ bundleData: Data) async throws -> LoadBundleTaskProgress {
       return try await withCheckedThrowingContinuation { continuation in
         self.loadBundle(bundleData) { progress, error in
           if let err = error {
@@ -49,7 +47,7 @@ import Foundation
     /// - Throws: `Error` if the bundle stream cannot be parsed.
     /// - Returns: The final `LoadBundleTaskProgress` that contains the total number of documents
     /// loaded.
-    public func loadBundle(_ bundleStream: InputStream) async throws -> LoadBundleTaskProgress {
+    func loadBundle(_ bundleStream: InputStream) async throws -> LoadBundleTaskProgress {
       return try await withCheckedThrowingContinuation { continuation in
         self.loadBundle(bundleStream) { progress, error in
           if let err = error {
@@ -104,10 +102,8 @@ import Foundation
     /// - Throws Throws an error if the transaction could not be committed, or if an error was
     /// explicitly specified in the `updateBlock` parameter.
     /// - Returns Returns the value returned in the `updateBlock` parameter if no errors occurred.
-    public func runTransaction(
-      _ updateBlock: @escaping (Transaction, NSErrorPointer)
-        -> Any?
-    ) async throws -> Any? {
+    func runTransaction(_ updateBlock: @escaping (Transaction, NSErrorPointer)
+      -> Any?) async throws -> Any? {
       // This needs to be wrapped in order to express a nullable return value upon success.
       // See https://github.com/firebase/firebase-ios-sdk/issues/9426 for more details.
       return try await withCheckedThrowingContinuation { continuation in

@@ -7,7 +7,31 @@ target 'Biba' do
   # ignore warnings from pods
   inhibit_all_warnings!
   # Pods for Biba
+  pod 'Firebase/RemoteConfig'
+  pod 'FirebaseAppCheck'
+  pod 'FirebaseAuth'
   pod 'FirebaseFirestore'
+  pod 'FirebaseFirestoreSwift'
+  pod 'FirebaseFunctions'
+  pod 'FirebaseInAppMessaging'
+  pod 'FirebaseMessaging'
+  pod 'GoogleMLKit/BarcodeScanning'
+  pod 'GoogleSignIn'
+  pod 'LineSDKSwift'
+  pod 'Mobile-Buy-SDK'
+  pod 'SDWebImage'
+  pod 'SkeletonView'
+  pod 'SnapKit'
   pod 'Sourcery'
+  pod 'SwipeCellKit'
+  pod 'Parchment', '~> 3.2'
+  
+end
 
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings.delete 'IPHONEOS_DEPLOYMENT_TARGET'
+    end
+  end
 end

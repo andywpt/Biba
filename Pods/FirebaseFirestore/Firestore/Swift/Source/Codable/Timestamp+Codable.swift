@@ -14,19 +14,20 @@
  * limitations under the License.
  */
 
-// SWIFT_PACKAGE
 #if SWIFT_PACKAGE
   @_exported import FirebaseFirestoreInternalWrapper
 #else
   @_exported import FirebaseFirestoreInternal
-#endif
+#endif // SWIFT_PACKAGE
 
-/// A protocol describing the encodable properties of a Timestamp.
-///
-/// Note: this protocol exists as a workaround for the Swift compiler: if the Timestamp class
-/// was extended directly to conform to Codable, the methods implementing the protocol would be need
-/// to be marked required but that can't be done in an extension. Declaring the extension on the
-/// protocol sidesteps this issue.
+/**
+ * A protocol describing the encodable properties of a Timestamp.
+ *
+ * Note: this protocol exists as a workaround for the Swift compiler: if the Timestamp class
+ * was extended directly to conform to Codable, the methods implementing the protocol would be need
+ * to be marked required but that can't be done in an extension. Declaring the extension on the
+ * protocol sidesteps this issue.
+ */
 private protocol CodableTimestamp: Codable {
   var seconds: Int64 { get }
   var nanoseconds: Int32 { get }
@@ -34,16 +35,18 @@ private protocol CodableTimestamp: Codable {
   init(seconds: Int64, nanoseconds: Int32)
 }
 
-/// The keys in a Timestamp. Must match the properties of CodableTimestamp.
+/** The keys in a Timestamp. Must match the properties of CodableTimestamp. */
 private enum TimestampKeys: String, CodingKey {
   case seconds
   case nanoseconds
 }
 
-/// An extension of Timestamp that implements the behavior of the Codable protocol.
-///
-/// Note: this is implemented manually here because the Swift compiler can't synthesize these methods
-/// when declaring an extension to conform to Codable.
+/**
+ * An extension of Timestamp that implements the behavior of the Codable protocol.
+ *
+ * Note: this is implemented manually here because the Swift compiler can't synthesize these methods
+ * when declaring an extension to conform to Codable.
+ */
 extension CodableTimestamp {
   public init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: TimestampKeys.self)
@@ -59,5 +62,5 @@ extension CodableTimestamp {
   }
 }
 
-/// Extends Timestamp to conform to Codable.
+/** Extends Timestamp to conform to Codable. */
 extension Timestamp: CodableTimestamp {}

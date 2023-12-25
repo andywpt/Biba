@@ -14,18 +14,17 @@
  * limitations under the License.
  */
 
-import FirebaseSharedSwift
 import Foundation
-
 #if SWIFT_PACKAGE
   @_exported import FirebaseFirestoreInternalWrapper
 #else
   @_exported import FirebaseFirestoreInternal
-#endif  // SWIFT_PACKAGE
+#endif // SWIFT_PACKAGE
+import FirebaseSharedSwift
 
-extension FirebaseDataDecoder.DateDecodingStrategy {
+public extension FirebaseDataDecoder.DateDecodingStrategy {
   /// Decode the `Date` from a Firestore `Timestamp`
-  public static var timestamp: FirebaseDataDecoder.DateDecodingStrategy {
+  static var timestamp: FirebaseDataDecoder.DateDecodingStrategy {
     return .custom { decoder in
       let container = try decoder.singleValueContainer()
       let value = try container.decode(Timestamp.self)

@@ -12,12 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// SWIFT_PACKAGE
 #if SWIFT_PACKAGE
   @_exported import FirebaseFirestoreInternalWrapper
 #else
   @_exported import FirebaseFirestoreInternal
-#endif
+#endif // SWIFT_PACKAGE
 
 // This is a trick to force generate a `FirebaseFirestore-Swift.h`
 // header that re-exports `FirebaseFirestoreInternal` for Objective-C
@@ -28,6 +27,6 @@
 // using `@import FirebaseFirestore;`. This API is not needed for Swift
 // clients and is therefore unavailable in a Swift context.
 @available(*, unavailable)
-@objc extension Firestore {
-  public static var __no_op: () -> Void { {} }
+@objc public extension Firestore {
+  static var __no_op: () -> Void { {} }
 }

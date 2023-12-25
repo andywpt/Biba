@@ -28,8 +28,8 @@ struct RingBuffer<Element>: Sequence {
     var errorDescription: String {
       switch self {
       case let .outOfBoundsPush(pushIndex, endIndex):
-        return "Out-of-bounds push at index \(pushIndex) to ring buffer with"
-          + "end index of \(endIndex)."
+        return "Out-of-bounds push at index \(pushIndex) to ring buffer with" +
+          "end index of \(endIndex)."
       }
     }
   }
@@ -91,7 +91,7 @@ struct RingBuffer<Element>: Sequence {
     }
 
     guard let popped = circularQueue[tailIndex] else {
-      return nil  // There is no element to pop.
+      return nil // There is no element to pop.
     }
 
     circularQueue[tailIndex] = nil
@@ -101,7 +101,7 @@ struct RingBuffer<Element>: Sequence {
 
   func makeIterator() -> IndexingIterator<[Element]> {
     circularQueue
-      .compactMap { $0 }  // Remove `nil` elements.
+      .compactMap { $0 } // Remove `nil` elements.
       .makeIterator()
   }
 }

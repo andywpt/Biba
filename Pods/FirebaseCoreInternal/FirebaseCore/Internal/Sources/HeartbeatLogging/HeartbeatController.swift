@@ -51,10 +51,8 @@ public final class HeartbeatController {
   /// - Parameters:
   ///   - storage: A heartbeat storage container.
   ///   - dateProvider: A date provider. Defaults to providing the current date.
-  init(
-    storage: HeartbeatStorageProtocol,
-    dateProvider: @escaping () -> Date = Date.init
-  ) {
+  init(storage: HeartbeatStorageProtocol,
+       dateProvider: @escaping () -> Date = Date.init) {
     self.storage = storage
     self.dateProvider = { Self.dateStandardizer(dateProvider()) }
   }
@@ -68,8 +66,8 @@ public final class HeartbeatController {
     let date = dateProvider()
 
     storage.readAndWriteAsync { heartbeatsBundle in
-      var heartbeatsBundle =
-        heartbeatsBundle ?? HeartbeatsBundle(capacity: self.heartbeatsStorageCapacity)
+      var heartbeatsBundle = heartbeatsBundle ??
+        HeartbeatsBundle(capacity: self.heartbeatsStorageCapacity)
 
       // Filter for the time periods where the last heartbeat to be logged for
       // that time period was logged more than one time period (i.e. day) ago.
@@ -97,7 +95,7 @@ public final class HeartbeatController {
   public func flush() -> HeartbeatsPayload {
     let resetTransform = { (heartbeatsBundle: HeartbeatsBundle?) -> HeartbeatsBundle? in
       guard let oldHeartbeatsBundle = heartbeatsBundle else {
-        return nil  // Storage was empty.
+        return nil // Storage was empty.
       }
       // The new value that's stored will use the old's cache to prevent the
       // logging of duplicates after flushing.
@@ -132,7 +130,7 @@ public final class HeartbeatController {
 
     storage.readAndWriteSync { heartbeatsBundle in
       guard var heartbeatsBundle = heartbeatsBundle else {
-        return nil  // Storage was empty.
+        return nil // Storage was empty.
       }
 
       todaysHeartbeat = heartbeatsBundle.removeHeartbeat(from: todaysDate)

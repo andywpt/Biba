@@ -37,8 +37,7 @@ extension FileStorage: StorageFactory {
     let sanitizedID = id.replacingOccurrences(of: ":", with: "_")
     let heartbeatFilePath = "heartbeats-\(sanitizedID)"
 
-    let storageURL =
-      rootDirectory
+    let storageURL = rootDirectory
       .appendingPathComponent(heartbeatDirectoryPath, isDirectory: true)
       .appendingPathComponent(heartbeatFilePath, isDirectory: false)
 

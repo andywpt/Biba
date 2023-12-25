@@ -20,7 +20,7 @@ import SwiftUI
   @_exported import FirebaseFirestoreInternalWrapper
 #else
   @_exported import FirebaseFirestoreInternal
-#endif  // SWIFT_PACKAGE
+#endif // SWIFT_PACKAGE
 
 /// The strategy to use when an error occurs during mapping Firestore documents
 /// to the target type of `FirestoreQuery`.
@@ -166,12 +166,10 @@ public struct FirestoreQuery<T>: DynamicProperty {
   ///   - decodingFailureStrategy: The strategy to use when there is a failure
   ///     during the decoding phase. Defaults to `DecodingFailureStrategy.raise`.
   ///   - animation: The optional animation to apply to the transaction.
-  public init<U: Decodable>(
-    collectionPath: String, predicates: [QueryPredicate] = [],
-    decodingFailureStrategy: DecodingFailureStrategy = .raise,
-    animation: Animation? = nil
-  )
-  where T == [U] {
+  public init<U: Decodable>(collectionPath: String, predicates: [QueryPredicate] = [],
+                            decodingFailureStrategy: DecodingFailureStrategy = .raise,
+                            animation: Animation? = nil)
+    where T == [U] {
     let configuration = Configuration(
       path: collectionPath,
       predicates: predicates,
@@ -191,12 +189,10 @@ public struct FirestoreQuery<T>: DynamicProperty {
   ///   - decodingFailureStrategy: The strategy to use when there is a failure
   ///     during the decoding phase. Defaults to `DecodingFailureStrategy.raise`.
   ///   - animation: The optional animation to apply to the transaction.
-  public init<U: Decodable>(
-    collectionPath: String, predicates: [QueryPredicate] = [],
-    decodingFailureStrategy: DecodingFailureStrategy = .raise,
-    animation: Animation? = nil
-  )
-  where T == Result<[U], Error> {
+  public init<U: Decodable>(collectionPath: String, predicates: [QueryPredicate] = [],
+                            decodingFailureStrategy: DecodingFailureStrategy = .raise,
+                            animation: Animation? = nil)
+    where T == Result<[U], Error> {
     let configuration = Configuration(
       path: collectionPath,
       predicates: predicates,

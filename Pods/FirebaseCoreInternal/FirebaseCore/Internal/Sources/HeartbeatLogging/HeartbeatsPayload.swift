@@ -18,7 +18,7 @@ import Foundation
   import GoogleUtilities_NSData
 #else
   import GoogleUtilities
-#endif  // SWIFT_PACKAGE
+#endif // SWIFT_PACKAGE
 
 /// A type that provides a string representation for use in an HTTP header.
 public protocol HTTPHeaderRepresentable {
@@ -99,7 +99,7 @@ extension HeartbeatsPayload: HTTPHeaderRepresentable {
         // Sort keys in debug builds to simplify output comparisons in unit tests.
         encoder.outputFormatting = .sortedKeys
       }
-    #endif  // DEBUG
+    #endif // DEBUG
 
     guard let data = try? encoder.encode(self) else {
       // If encoding fails, fall back to encoding with an empty payload.
@@ -139,12 +139,12 @@ extension HeartbeatsPayload.UserAgentPayload: Equatable {}
 
 // MARK: - Data
 
-extension Data {
+public extension Data {
   /// Returns a Base-64 URL-safe encoded string.
   ///
   /// - parameter options: The options to use for the encoding. Default value is `[]`.
   /// - returns: The Base-64 URL-safe encoded string.
-  public func base64URLEncodedString(options: Data.Base64EncodingOptions = []) -> String {
+  func base64URLEncodedString(options: Data.Base64EncodingOptions = []) -> String {
     base64EncodedString()
       .replacingOccurrences(of: "/", with: "_")
       .replacingOccurrences(of: "+", with: "-")
@@ -156,9 +156,8 @@ extension Data {
   /// Returns nil when the input is not recognized as valid Base-64.
   /// - parameter base64URLString: The string to parse.
   /// - parameter options: Encoding options. Default value is `[]`.
-  public init?(base64URLEncoded base64URLString: String, options: Data.Base64DecodingOptions = []) {
-    var base64Encoded =
-      base64URLString
+  init?(base64URLEncoded base64URLString: String, options: Data.Base64DecodingOptions = []) {
+    var base64Encoded = base64URLString
       .replacingOccurrences(of: "_", with: "/")
       .replacingOccurrences(of: "-", with: "+")
 
@@ -173,14 +172,14 @@ extension Data {
   /// Returns the compressed data.
   /// - Returns: The compressed data.
   /// - Throws: An error if compression failed.
-  public func zipped() throws -> Data {
+  func zipped() throws -> Data {
     try NSData.gul_data(byGzippingData: self)
   }
 
   /// Returns the uncompressed data.
   /// - Returns: The decompressed data.
   /// - Throws: An error if decompression failed.
-  public func unzipped() throws -> Data {
+  func unzipped() throws -> Data {
     try NSData.gul_data(byInflatingGzippedData: self)
   }
 }

@@ -14,19 +14,18 @@
  * limitations under the License.
  */
 
-import FirebaseSharedSwift
-import Foundation
-
-// SWIFT_PACKAGE
 #if SWIFT_PACKAGE
   @_exported import FirebaseFirestoreInternalWrapper
 #else
   @_exported import FirebaseFirestoreInternal
-#endif
+#endif // SWIFT_PACKAGE
 
-extension FirebaseDataEncoder.DateEncodingStrategy {
+import FirebaseSharedSwift
+import Foundation
+
+public extension FirebaseDataEncoder.DateEncodingStrategy {
   /// Encode the `Date` as a Firestore `Timestamp`.
-  public static var timestamp: FirebaseDataEncoder.DateEncodingStrategy {
+  static var timestamp: FirebaseDataEncoder.DateEncodingStrategy {
     return .custom { date, encoder in
       var container = encoder.singleValueContainer()
       try container.encode(Timestamp(date: date))

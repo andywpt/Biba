@@ -14,25 +14,23 @@
  * limitations under the License.
  */
 
-import Foundation
-
-// SWIFT_PACKAGE
 #if SWIFT_PACKAGE
   @_exported import FirebaseFirestoreInternalWrapper
 #else
   @_exported import FirebaseFirestoreInternal
-#endif
+#endif // SWIFT_PACKAGE
+import Foundation
 
 #if compiler(>=5.5.2) && canImport(_Concurrency)
   @available(iOS 13, tvOS 13, macOS 10.15, macCatalyst 13, watchOS 7, *)
-  extension CollectionReference {
+  public extension CollectionReference {
     /// Adds a new document to this collection with the specified data, assigning it a document ID
     /// automatically.
     /// - Parameter data: A `Dictionary` containing the data for the new document.
     /// - Throws: `Error` if the backend rejected the write.
     /// - Returns: A `DocumentReference` pointing to the newly created document.
     @discardableResult
-    public func addDocument(data: [String: Any]) async throws -> DocumentReference {
+    func addDocument(data: [String: Any]) async throws -> DocumentReference {
       return try await withCheckedThrowingContinuation { continuation in
         var document: DocumentReference?
         document = self.addDocument(data: data) { error in

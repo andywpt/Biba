@@ -15,14 +15,13 @@
  */
 
 import Foundation
-
 #if SWIFT_PACKAGE
   @_exported import FirebaseFirestoreInternalWrapper
 #else
   @_exported import FirebaseFirestoreInternal
-#endif  // SWIFT_PACKAGE
+#endif // SWIFT_PACKAGE
 
-extension DocumentSnapshot {
+public extension DocumentSnapshot {
   /// Retrieves all fields in a document and converts them to an instance of
   /// caller-specified type.
   ///
@@ -38,11 +37,9 @@ extension DocumentSnapshot {
   ///     not yet been set to their final value are returned from the snapshot.
   ///   - decoder: The decoder to use to convert the document. Defaults to use
   ///     the default decoder.
-  public func data<T: Decodable>(
-    as type: T.Type,
-    with serverTimestampBehavior: ServerTimestampBehavior = .none,
-    decoder: Firestore.Decoder = .init()
-  ) throws -> T {
+  func data<T: Decodable>(as type: T.Type,
+                          with serverTimestampBehavior: ServerTimestampBehavior = .none,
+                          decoder: Firestore.Decoder = .init()) throws -> T {
     let d: Any = data(with: serverTimestampBehavior) ?? NSNull()
     return try decoder.decode(T.self, from: d, in: reference)
   }

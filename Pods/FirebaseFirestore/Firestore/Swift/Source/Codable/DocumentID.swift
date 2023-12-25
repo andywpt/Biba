@@ -14,15 +14,14 @@
  * limitations under the License.
  */
 
-@_implementationOnly import FirebaseCoreExtension
-import FirebaseSharedSwift
-
-// SWIFT_PACKAGE
 #if SWIFT_PACKAGE
   @_exported import FirebaseFirestoreInternalWrapper
 #else
   @_exported import FirebaseFirestoreInternal
-#endif
+#endif // SWIFT_PACKAGE
+
+@_implementationOnly import FirebaseCoreExtension
+import FirebaseSharedSwift
 
 extension CodingUserInfoKey {
   static let documentRefUserInfoKey =
@@ -110,8 +109,7 @@ protocol DocumentIDProtocol {
 ///   write it into another without adjusting the value here.
 @propertyWrapper
 public struct DocumentID<Value: DocumentIDWrappable & Codable>:
-  StructureCodingUncodedUnkeyed
-{
+  StructureCodingUncodedUnkeyed {
   private var value: Value? = nil
 
   public init(wrappedValue value: Value?) {
@@ -137,11 +135,11 @@ public struct DocumentID<Value: DocumentIDWrappable & Codable>:
       service: "[FirebaseFirestoreSwift]",
       code: "I-FST000002",
       message: """
-        Attempting to initialize or set a @DocumentID property with a non-nil \
-        value: "\(value)". The document ID is managed by Firestore and any \
-        initialized or set value will be ignored. The ID is automatically set \
-        when reading from Firestore.
-        """
+      Attempting to initialize or set a @DocumentID property with a non-nil \
+      value: "\(value)". The document ID is managed by Firestore and any \
+      initialized or set value will be ignored. The ID is automatically set \
+      when reading from Firestore.
+      """
     )
   }
 }
@@ -164,11 +162,8 @@ extension DocumentID: Codable {
   /// - Parameter decoder: A decoder.
   /// - Throws: ``FirestoreDecodingError``
   public init(from decoder: Decoder) throws {
-    guard
-      let reference =
-        decoder
-        .userInfo[CodingUserInfoKey.documentRefUserInfoKey] as? DocumentReference
-    else {
+    guard let reference = decoder
+      .userInfo[CodingUserInfoKey.documentRefUserInfoKey] as? DocumentReference else {
       throw FirestoreDecodingError.decodingIsNotSupported(
         """
         Could not find DocumentReference for user info key: \(CodingUserInfoKey

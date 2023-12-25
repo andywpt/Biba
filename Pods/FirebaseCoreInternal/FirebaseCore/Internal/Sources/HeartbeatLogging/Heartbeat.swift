@@ -55,12 +55,10 @@ struct Heartbeat: Codable, Equatable {
   ///   - agent: An anonymous string of information to associate the heartbeat with.
   ///   - date: The date when the heartbeat was recorded.
   ///   - version: The heartbeat's version. Defaults to the current version.
-  init(
-    agent: String,
-    date: Date,
-    timePeriods: [TimePeriod] = [],
-    version: Int = version
-  ) {
+  init(agent: String,
+       date: Date,
+       timePeriods: [TimePeriod] = [],
+       version: Int = version) {
     self.agent = agent
     self.date = date
     self.timePeriods = timePeriods
@@ -71,7 +69,7 @@ struct Heartbeat: Codable, Equatable {
 extension Heartbeat: HeartbeatsPayloadConvertible {
   func makeHeartbeatsPayload() -> HeartbeatsPayload {
     let userAgentPayloads = [
-      HeartbeatsPayload.UserAgentPayload(agent: agent, dates: [date])
+      HeartbeatsPayload.UserAgentPayload(agent: agent, dates: [date]),
     ]
     return HeartbeatsPayload(userAgentPayloads: userAgentPayloads)
   }

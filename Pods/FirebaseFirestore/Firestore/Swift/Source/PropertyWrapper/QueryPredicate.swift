@@ -14,12 +14,11 @@
  * limitations under the License.
  */
 
-// SWIFT_PACKAGE
 #if SWIFT_PACKAGE
   @_exported import FirebaseFirestoreInternalWrapper
 #else
   @_exported import FirebaseFirestoreInternal
-#endif
+#endif // SWIFT_PACKAGE
 
 /// Query predicates that can be used to filter results fetched by `FirestoreQuery`.
 ///
@@ -67,10 +66,8 @@ public enum QueryPredicate {
     .arrayContains(field, value)
   }
 
-  public static func whereField(
-    _ field: String,
-    arrayContainsAny values: [Any]
-  ) -> QueryPredicate {
+  public static func whereField(_ field: String,
+                                arrayContainsAny values: [Any]) -> QueryPredicate {
     .arrayContainsAny(field, values)
   }
 
@@ -82,17 +79,13 @@ public enum QueryPredicate {
     .isGreaterThan(field, value)
   }
 
-  public static func whereField(
-    _ field: String,
-    isLessThanOrEqualTo value: Any
-  ) -> QueryPredicate {
+  public static func whereField(_ field: String,
+                                isLessThanOrEqualTo value: Any) -> QueryPredicate {
     .isLessThanOrEqualTo(field, value)
   }
 
-  public static func whereField(
-    _ field: String,
-    isGreaterThanOrEqualTo value: Any
-  ) -> QueryPredicate {
+  public static func whereField(_ field: String,
+                                isGreaterThanOrEqualTo value: Any) -> QueryPredicate {
     .isGreaterThanOrEqualTo(field, value)
   }
 
@@ -142,10 +135,8 @@ public enum QueryPredicate {
     .isLessThanOrEqualTo(name, value)
   }
 
-  public static func `where`(
-    _ name: String,
-    isGreaterThanOrEqualTo value: Any
-  ) -> QueryPredicate {
+  public static func `where`(_ name: String,
+                             isGreaterThanOrEqualTo value: Any) -> QueryPredicate {
     .isGreaterThanOrEqualTo(name, value)
   }
 }

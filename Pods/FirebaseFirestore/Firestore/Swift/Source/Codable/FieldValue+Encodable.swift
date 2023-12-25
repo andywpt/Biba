@@ -14,14 +14,13 @@
  * limitations under the License.
  */
 
-// SWIFT_PACKAGE
 #if SWIFT_PACKAGE
   @_exported import FirebaseFirestoreInternalWrapper
 #else
   @_exported import FirebaseFirestoreInternal
-#endif
+#endif // SWIFT_PACKAGE
 
-/// Extends FieldValue to conform to Encodable.
+/** Extends FieldValue to conform to Encodable. */
 extension FieldValue: Encodable {
   /// Encoding a FieldValue will throw by default unless the encoder implementation
   /// explicitly handles it, which is what Firestore.Encoder does.

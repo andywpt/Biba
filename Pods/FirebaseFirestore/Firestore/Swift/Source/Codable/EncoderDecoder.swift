@@ -14,18 +14,16 @@
  * limitations under the License.
  */
 
-import FirebaseSharedSwift
-import Foundation
-
-// SWIFT_PACKAGE
 #if SWIFT_PACKAGE
   @_exported import FirebaseFirestoreInternalWrapper
 #else
   @_exported import FirebaseFirestoreInternal
-#endif
+#endif // SWIFT_PACKAGE
+import FirebaseSharedSwift
+import Foundation
 
-extension Firestore {
-  public class Encoder {
+public extension Firestore {
+  class Encoder {
     /// The strategy to use in encoding dates. Defaults to `.timestamp`.
     public var dateEncodingStrategy: FirebaseDataEncoder.DateEncodingStrategy = .timestamp
 
@@ -33,9 +31,8 @@ extension Firestore {
     public var dataEncodingStrategy: FirebaseDataEncoder.DataEncodingStrategy = .blob
 
     /// The strategy to use in encoding non-conforming numbers. Defaults to `.throw`.
-    public var nonConformingFloatEncodingStrategy:
-      FirebaseDataEncoder
-        .NonConformingFloatEncodingStrategy = .throw
+    public var nonConformingFloatEncodingStrategy: FirebaseDataEncoder
+      .NonConformingFloatEncodingStrategy = .throw
 
     /// The strategy to use for encoding keys. Defaults to `.useDefaultKeys`.
     public var keyEncodingStrategy: FirebaseDataEncoder.KeyEncodingStrategy = .useDefaultKeys
@@ -53,14 +50,11 @@ extension Firestore {
       encoder.userInfo = userInfo
       let encoded = try encoder.encode(value)
       guard let dictionaryValue = encoded as? [String: Any] else {
-        throw
-          EncodingError
-          .invalidValue(
-            value,
-            EncodingError
-              .Context(
-                codingPath: [],
-                debugDescription: "Top-level \(T.self) is not allowed."))
+        throw EncodingError
+          .invalidValue(value,
+                        EncodingError
+                          .Context(codingPath: [],
+                                   debugDescription: "Top-level \(T.self) is not allowed."))
       }
       return dictionaryValue
     }
@@ -68,7 +62,7 @@ extension Firestore {
     public init() {}
   }
 
-  public class Decoder {
+  class Decoder {
     /// The strategy to use in decoding dates. Defaults to `.timestamp`.
     public var dateDecodingStrategy: FirebaseDataDecoder.DateDecodingStrategy = .timestamp
 
@@ -76,9 +70,8 @@ extension Firestore {
     public var dataDecodingStrategy: FirebaseDataDecoder.DataDecodingStrategy = .blob
 
     /// The strategy to use in decoding non-conforming numbers. Defaults to `.throw`.
-    public var nonConformingFloatDecodingStrategy:
-      FirebaseDataDecoder
-        .NonConformingFloatDecodingStrategy = .throw
+    public var nonConformingFloatDecodingStrategy: FirebaseDataDecoder
+      .NonConformingFloatDecodingStrategy = .throw
 
     /// The strategy to use for decoding keys. Defaults to `.useDefaultKeys`.
     public var keyDecodingStrategy: FirebaseDataDecoder.KeyDecodingStrategy = .useDefaultKeys
@@ -98,10 +91,8 @@ extension Firestore {
       return try decoder.decode(t, from: data)
     }
 
-    public func decode<T: Decodable>(
-      _ t: T.Type, from data: Any,
-      in reference: DocumentReference?
-    ) throws -> T {
+    public func decode<T: Decodable>(_ t: T.Type, from data: Any,
+                                     in reference: DocumentReference?) throws -> T {
       if let reference = reference {
         userInfo[CodingUserInfoKey.documentRefUserInfoKey] = reference
       }

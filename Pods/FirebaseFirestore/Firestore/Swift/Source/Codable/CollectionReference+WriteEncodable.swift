@@ -20,9 +20,9 @@ import Foundation
   @_exported import FirebaseFirestoreInternalWrapper
 #else
   @_exported import FirebaseFirestoreInternal
-#endif  // SWIFT_PACKAGE
+#endif // SWIFT_PACKAGE
 
-extension CollectionReference {
+public extension CollectionReference {
   /// Encodes an instance of `Encodable` and adds a new document to this collection
   /// with the encoded data, assigning it a document ID automatically.
   ///
@@ -37,13 +37,10 @@ extension CollectionReference {
   ///                 immediately.
   /// - Returns: A `DocumentReference` pointing to the newly created document.
   @discardableResult
-  public func addDocument<T: Encodable>(
-    from value: T,
-    encoder: Firestore.Encoder = Firestore.Encoder(),
-    completion: ((Error?) -> Void)? = nil
-  ) throws
-    -> DocumentReference
-  {
+  func addDocument<T: Encodable>(from value: T,
+                                 encoder: Firestore.Encoder = Firestore.Encoder(),
+                                 completion: ((Error?) -> Void)? = nil) throws
+    -> DocumentReference {
     let encoded = try encoder.encode(value)
     return addDocument(data: encoded, completion: completion)
   }

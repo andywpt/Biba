@@ -29,6 +29,7 @@
 		E87941AF2B3749160042F58B /* Fastfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; path = Fastfile; sourceTree = "<group>"; };
 		E87941BB2B3887B80042F58B /* GoogleService-Info-Stage.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Stage.plist"; sourceTree = "<group>"; };
 		E87941BC2B3887B80042F58B /* GoogleService-Info-Prod.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Prod.plist"; sourceTree = "<group>"; };
+		E87941BD2B38955F0042F58B /* Biba.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Biba.entitlements; sourceTree = "<group>"; };
 		E8D856BB2B2EFAA9005D2E9F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E8D856BD2B2EFAA9005D2E9F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E8D856C42B2EFAAA005D2E9F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -157,6 +158,7 @@
 		E8D856BA2B2EFAA9005D2E9F /* Biba */ = {
 			isa = PBXGroup;
 			children = (
+				E87941BD2B38955F0042F58B /* Biba.entitlements */,
 				E859A90C2B3294FA007E258C /* App */,
 				E87941B52B387F7F0042F58B /* ViewControllers */,
 			);
@@ -457,6 +459,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Stage";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Biba/Biba.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
@@ -491,6 +494,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Biba/Biba.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
@@ -512,7 +516,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.biba;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = DevelopAllApps;
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "Develop Biba Provisioning Profile";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

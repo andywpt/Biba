@@ -55,13 +55,14 @@ platform :ios do
  desc "Configure code signing settings in Xcode before build"
  lane :configure_code_signing_settings do |options|
      # install_provision_profile
-     sigh(app_identifier: "*", readonly: true)
+     sigh(readonly: true)
      provision_profile_name = lane_context[SharedValues::SIGH_NAME]
      # select the installed provision profile
      update_code_signing_settings(
          code_sign_identity: "iPhone Distribution",
          team_id: "ZKX4347K9W",
-         profile_name: provision_profile_name
+         profile_name: provision_profile_name,
+         build_configurations: ["Release"]
      )
  end
 

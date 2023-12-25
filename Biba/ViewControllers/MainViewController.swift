@@ -36,7 +36,7 @@ class MainViewController: UIViewController {
     ])
     label.text = "\(Config.environment)"
     if Config.environment == "Production" {
-      view.backgroundColor = .systemYellow
+      view.backgroundColor = .systemGreen
       label.textColor = .black
       label.text = "正式環境🚀"
     } else  {

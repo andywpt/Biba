@@ -77,13 +77,6 @@ end
  desc "Upload to TestFlight"
  lane :upload_ipa_to_testflight do
      
-#    deliver(
-#        skip_screenshots: true,
-#        skip_metadata: true,
-#        skip_app_version_update: true,
-#        force: true, # skips verification of HTML preview file (since this will be run from a CI machine)
-#        run_precheck_before_submit: false # not supported through ASC API yet
-#    )
     testflight(
         changelog: "測試這個"
     )
@@ -95,7 +88,7 @@ end
     update_app_build_number
     install_distribution_certificate
     configure_code_signing_settings
-    archive_app
-    upload_ipa_to_testflight
+    # archive_app
+    # upload_ipa_to_testflight
  end
 end

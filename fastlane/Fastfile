@@ -2,7 +2,7 @@
 platform :ios do
  desc "Load the App Store Connect API token to use in other fastlane tools and actions"
  lane :load_app_store_connect_api_key do
-   app_store_connect_api_key(
+   app_store_connect_api_key
      key_id: ENV["APPSTORE_API_KEY_ID"],
      issuer_id: ENV["APPSTORE_API_ISSUER_ID"],
      key_content: ENV["APPSTORE_API_PRIVATE_KEY"],

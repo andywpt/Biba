@@ -36,9 +36,9 @@ class MainViewController: UIViewController {
     ])
     label.text = "\(Config.environment)"
     if Config.environment == "Production" {
-      view.backgroundColor = .systemYellow
+      view.backgroundColor = .systemPurple
       label.textColor = .black
-      label.text = "正式環境🚀"
+      label.text = "新增Apple Pay 功能"
     } else  {
       view.backgroundColor = .black
       label.textColor = .white

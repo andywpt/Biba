@@ -14,9 +14,7 @@ platform :ios do
  lane :update_app_build_number do
    current_version = get_version_number()
    latest_build_number = latest_testflight_build_number(version: current_version)
-   increment_build_number(
-     build_number: (latest_build_number + 1),
-   )
+   increment_build_number(build_number: (latest_build_number + 1))
  end
 
  desc "Install distribution certificate in the keychain"
@@ -77,7 +75,12 @@ end
  desc "Upload to TestFlight"
  lane :upload_ipa_to_testflight do
     testflight(
-        changelog: "測試這個"
+        changelog: "測試這個",
+        localized_build_info: {
+            "default": {
+                whats_new: "測試這個",
+            }
+        }
     )
  end
     

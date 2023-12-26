@@ -84,10 +84,10 @@ end
  desc "Build and upload to TestFlight"
  lane :build_upload_testflight do
     load_app_store_connect_api_key
-    update_app_build_number
-    install_distribution_certificate
-    configure_code_signing_settings
-    archive_app
-    upload_ipa_to_testflight
+    # update_app_build_number
+    # install_distribution_certificate
+    # configure_code_signing_settings
+    # archive_app
+    # upload_ipa_to_testflight
  end
 end

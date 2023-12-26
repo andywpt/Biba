@@ -76,7 +76,6 @@ end
 
  desc "Upload to TestFlight"
  lane :upload_ipa_to_testflight do
-     
     testflight(
         changelog: "測試這個"
     )
@@ -88,7 +87,7 @@ end
     update_app_build_number
     install_distribution_certificate
     configure_code_signing_settings
-    # archive_app
-    # upload_ipa_to_testflight
+    archive_app
+    upload_ipa_to_testflight
  end
 end

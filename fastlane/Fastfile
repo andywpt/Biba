@@ -74,14 +74,8 @@ end
 
  desc "Upload to TestFlight"
  lane :upload_ipa_to_testflight do
-    testflight(
-        changelog: "測試這個",
-        localized_build_info: {
-            "default": {
-                whats_new: "測試這個",
-            }
-        }
-    )
+    changelog_from_git_commits(commits_count: 1)
+    testflight
  end
     
  desc "Build and upload to TestFlight"

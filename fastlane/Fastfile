@@ -74,6 +74,7 @@ end
 
  desc "Upload to TestFlight"
  lane :upload_ipa_to_testflight do
+    changelog_from_git_commits(commits_count: 1, merge_commit_filtering: "exclude_merges")
     testflight(
         changelog: "測試這個",
         localized_build_info: {

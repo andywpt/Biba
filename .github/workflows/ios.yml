@@ -7,7 +7,7 @@ on:
       - main
     paths:
       - "iOS/**"
-
+      - '!iOS/**.md'
 jobs:
   build:
     environment: Stage
